@@ -1,0 +1,88 @@
+
+
+.home header { 
+  font-size: 40px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.home nav { margin-bottom: 30px }
+.home nav * { padding: 0px 15px}
+
+.home nav button {
+  width: 30px; height: 30px; 
+  background-color: white;
+}
+.home button.search { 
+  background-image: url("https://image.flaticon.com/icons/svg/149/149852.svg");
+  background-repeat: no-repeat;
+  border: none;
+}
+.home button.auth { 
+  background-image: url("https://image.flaticon.com/icons/svg/1000/1000997.svg");
+  background-repeat: no-repeat;
+  border: none;
+}
+
+.home {
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+.home .main-functions {
+  display: grid;
+  grid-template-columns: 300px 300px 300px;
+  grid-template-rows: 300px 300px;
+  grid-gap: 10px 10px;
+}
+
+.home .main-functions div {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: rgb(254, 245, 254)
+}
+.home .main-functions div:hover {
+  background-color: rgb(254, 230, 254);
+  cursor: pointer;
+}
+.home .main-functions div img{
+  height: 70%;
+}
+
+.home p { 
+  text-align: center;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+
+.home .modal {
+  position: fixed;
+  top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(230, 230, 230, 0.5);
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home .flower-detail-modal-body {
+  width :500px; height: 700px;
+  border: 1px solid black;
+  background-color: white;
+  
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home .flower-detail-modal-body img { width: 200px; height: 200px;}
+.home .flower-detail-modal-body p { 
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+}

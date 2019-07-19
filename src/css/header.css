@@ -1,0 +1,25 @@
+.header {
+    position: fixed;
+    top:0; left:0;
+    width: 100vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(254, 245, 254); 
+}
+.header > * { padding: 0em 1em}
+
+.header nav {
+    display: flex;
+    align-items: center;
+}
+.header nav > * { margin-left: 3em}
+
+.header nav .auth { 
+    width: 30px; height: 30px; 
+    background-color:rgb(254, 245, 254); 
+    background-image: url("https://image.flaticon.com/icons/svg/1000/1000997.svg");
+    background-repeat: no-repeat;
+    border: none;
+}
