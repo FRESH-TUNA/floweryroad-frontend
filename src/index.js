@@ -8,7 +8,7 @@ import './index.css';
 import App from './App';
 import auth from './reducers/authReducer'
 import ReduxThunk from 'redux-thunk';
-// import * as serviceWorker from './serviceWorker';
+
 
 import axios from 'axios';
 axios.defaults.baseURL = 'http://localhost:8000'

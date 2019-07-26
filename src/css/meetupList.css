@@ -1,3 +1,9 @@
+.meetup-list .meetups-loading {
+    position: fixed;
+    top: 50%;    
+    left: 50%;
+}
+
 .meetup-list .meetups {
     display: grid;
     grid-template-columns: 200px 200px 200px;

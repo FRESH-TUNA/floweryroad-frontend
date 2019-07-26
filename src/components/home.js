@@ -2,23 +2,40 @@ import React from 'react'
 import styles from '../css/home.css'
 import { Link, Route, Switch } from 'react-router-dom';
 import { withRouter } from "react-router-dom";
+import FlowerDetail from '../components/flowerDetail'
 
 class Home extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            flowerData: {
+                "id": null,
+                "name": null,
+                "floriography": null,	
+                "description" : null,
+                "gender": null,
+                "age": null,	
+                "color": null,	
+                "night": null,	
+                "month": null,
+                "day": null,
+                "like": null,
+                "searchAmount": null,
+                "imageAddress": null
+            }
+        };
     }
 
-    // changeFlowerDetailModalstate = () => {
-    //     ////// modal-style
-    //     // const flowerDetailModal = document.getElementsByClassName('flower-detail-modal')[0]
-    //     // if (flowerDetailModal.style.display === 'flex')
-    //     //     flowerDetailModal.style.display = 'none'
-    //     // else
-    //     //     flowerDetailModal.style.display = 'flex
-    // }
+    componentDidMount() {
+        fetch('http://demo4393270.mockable.io/flower?month=3&day=20')
+            .then(response => {
+                return response.json()
+            })
+            .then(response => {
+                this.setState({flowerData: response.data[0]})
+            })
+    }
     
-    // blockPropagate = (event) => {event.stopPropagation()}
-
     render() {
         return (
             <div className="home">
@@ -29,9 +46,9 @@ class Home extends React.Component {
                 </nav>
                 <div class="main-functions">
                     
-                    <div onClick={() => this.props.history.push('/flowerDetail')}>
+                    <div onClick={() => this.props.history.push('/todayFlower')}>
                         <img src="https://image.flaticon.com/icons/svg/1087/1087436.svg" />
-                        <p>진리는 나의 빛</p>
+                        <p>{this.state.flowerData.name}</p>
                     </div>
         
                     <div onClick="changeFlowerRecommendModalstate()">
@@ -43,18 +60,11 @@ class Home extends React.Component {
                         <p>화제의 꽃</p>
                     </div>
                     <div onClick={() => this.props.history.push('/meetup')}>
-                        <img src="https://image.flaticon.com/icons/svg/1087/1087422.svg" />
-                        <p>꽃과의 만남</p>
-                    </div>
-                    <div>
                         <img src="https://image.flaticon.com/icons/svg/1898/1898786.svg" />
                         <p>꽃 도감</p>
                     </div>
-                    <div>
-                        <img src="https://image.flaticon.com/icons/svg/1670/1670017.svg" />
-                        <p>풀꽃집</p>
-                    </div>
                 </div>
+                <Route path='/todayFlower' component={() => <FlowerDetail flowerData={this.state.flowerData} />} />
             </div>
         );
     }

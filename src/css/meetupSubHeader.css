@@ -17,16 +17,13 @@
 
 .sub-header .search-bar {
     height: 3em;
-    width: 350px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
 }
 .sub-header input {
-    width: 80%;
+    width: 300px;
     height: 3em;
     border: 0.1em solid gray;
-    box-shadow: 0.1em 0.1em 0.1em 0.1em grey;
     border-radius: 1em;
 }
 .sub-header button {
