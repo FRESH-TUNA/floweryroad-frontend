@@ -97,3 +97,27 @@
   margin-block-start: 1em;
   margin-block-end: 1em;
 }
+
+.home .slider {
+  position: fixed;
+  bottom: -280px;
+  transition: bottom 1s;
+  padding: 0 50px;
+}
+.home .slider:hover {
+  bottom: 10px;
+}
+
+.home .slick-slider {  
+  width: 950px;
+}
+
+.home .slick-list {
+  height: 300px;
+}
+
+.home .slick-next, .slick-prev { border: 1px solid black; }
+
+.home .slick-slider img {width: 300px; height: 300px;}
+
+.home .slick-slide > div > div { display: flex; } 

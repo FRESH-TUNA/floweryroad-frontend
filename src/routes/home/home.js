@@ -1,10 +1,12 @@
 import React from 'react'
-import styles from '../../css/home.css'
 import { Link, Route, Switch } from 'react-router-dom';
 import { withRouter } from "react-router-dom";
 import FlowerDetail from '../../routes/flowerDetail/homeFlowerDetail'
 import Recommend from '../../routes/recommend/recommend'
 import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import '../../css/home.css'
 
 class Home extends React.Component {
     constructor(props) {
@@ -39,11 +41,11 @@ class Home extends React.Component {
     }
 
     render() {
-        var settings = {
-            infinite: true,
+        const settings = {
+            dots: true,
             speed: 500,
-            slidesToShow: 1,
-            slidesToScroll: 1
+            slidesToShow: 3,
+            slidesToScroll: 3,
         };
 
         return (
@@ -54,36 +56,22 @@ class Home extends React.Component {
                     <button type="button" onClick={() => this.props.history.push('/meetup')}><img src="https://image.flaticon.com/icons/svg/149/149852.svg" /></button>
                 </div>
                 <button type="button" onClick={() => this.props.history.push('/meetup')}>화제의 꽃</button>
-                {/* <Slider {...settings}>
-                    <div>
-                        <img src="http://placekitten.com/g/400/200" />
-                    </div>
-                    <div>
-                        <img src="http://placekitten.com/g/400/200" />
-                    </div>
-                    <div>
-                        <img src="http://placekitten.com/g/400/200" />
-                    </div>
-                    <div>
-                        <img src="http://placekitten.com/g/400/200" />
-                    </div>
-                </Slider> */}
-                {/* <div class="main-functions"> */}
-                {/* window.location.assign("/todayFlower") */}
-                {/* <div onClick={() => this.props.history.push('/todayFlower')}>
-                        <img src="https://image.flaticon.com/icons/svg/1087/1087436.svg" />
-                        <p>{this.state.flowerData.name}</p>
-                    </div>
-        
-                    <div onClick={() => this.props.history.push('/recommend')}>
-                        <img src="https://image.flaticon.com/icons/svg/185/185755.svg" />
-                        <p>꽃 추천받기</p>
-                    </div>
-                    <div>
-                        <img src="https://image.flaticon.com/icons/svg/185/185788.svg" />
-                        <p>화제의 꽃</p>
-                    </div>
-                </div> */}
+                <div className="slider">
+                    <Slider {...settings}>
+                        <div>
+                            <img src="http://placekitten.com/g/400/200" />
+                        </div>
+                        <div>
+                            <img src="http://placekitten.com/g/400/200" />
+                        </div>
+                        <div>
+                            <img src="http://placekitten.com/g/400/200" />
+                        </div>
+                        <div>
+                            <img src="http://placekitten.com/g/400/200" />
+                        </div>
+                    </Slider>
+                </div>
             </div>
         );
     }
