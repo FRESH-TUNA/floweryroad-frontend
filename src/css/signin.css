@@ -1,0 +1,36 @@
+.signin { 
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signin .body {
+    width: 400px;
+    height: 500px;
+    border: 1px solid black;
+
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.signin h1 { margin-bottom: 1em; }
+
+.signin .input-box {
+    display: flex;
+    flex-flow: column;
+    width: 80%;
+}
+
+.signin input {
+    height: 2em;
+    margin: 0.2em 0em;
+}
+
+.signin button { 
+    width: 6em;
+    height: 2em; 
+    margin: 1em 0em;
+}

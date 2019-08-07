@@ -1,11 +1,10 @@
 import React from 'react'
-import Header from './header'
-import SubHeader from './meetupSubheader'
-import '../css/meetupList.css'
-import flowerDetail from './flowerDetail';
+import Header from '../../components/SearchResult/searchFlowerHeader'
+import SubHeader from '../../components/SearchResult/searchFlowerSubheader'
+import '../../css/meetupList.css'
 import { Link, Route, Switch } from 'react-router-dom';
 import { withRouter } from "react-router-dom";
-import SearchFlowerDetail from '../components/searchFlowerDetail'
+import SearchFlowerDetail from '../../components/SearchResult/searchFlowerDetail'
 
 class Meetup extends React.Component {
     constructor(props) {
