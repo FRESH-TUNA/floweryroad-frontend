@@ -15,11 +15,9 @@
 .home .search-bar {
   width: 920px;
   height: 50px;
-  background-color: white;
 
   display: flex;
   justify-content: flex-end;
-  border: 0.2em solid rgb(254, 230, 254);
 
   margin-bottom: 10px;
 }
@@ -30,14 +28,16 @@
   font-size: 1.5em;
   padding: 0 1em;
   border-style: none;
+  background-color: rgb(230,230,230);
 }
 
 .home .search-bar input:focus{ outline: none; }
 
 .home .search-bar button{ 
   width: 50px;
+  height: 50px;
   padding: 10px;
-  background-color: white;
+  background-color: rgb(230,230,230);
   border: none;
 }
 
@@ -64,6 +64,12 @@
   height: 70%;
 }
 
+.home button {
+  height: 30px;
+  width: 100px;
+  border-color: black;
+  font-family: sans-serif;
+}
 .home p { 
   text-align: center;
   margin-block-start: 0em;
@@ -100,7 +106,7 @@
 
 .home .slider {
   position: fixed;
-  bottom: -280px;
+  bottom: -0px;
   transition: bottom 1s;
   padding: 0 50px;
 }
@@ -109,15 +115,20 @@
 }
 
 .home .slick-slider {  
-  width: 950px;
+  width: 910px;
 }
 
 .home .slick-list {
-  height: 300px;
+  height: 310px;
 }
 
-.home .slick-next, .slick-prev { border: 1px solid black; }
+.home .slick-prev { border: 1px solid black; height: 30px; width: 30px;}
+.home .slick-next { border: 1px solid black; height: 30px; width: 30px;}
 
-.home .slick-slider img {width: 300px; height: 300px;}
+.home .slick-slide {
+  width: 300px;
+  height: 300px;
+  border: 1px solid black; 
+}
 
 .home .slick-slide > div > div { display: flex; } 

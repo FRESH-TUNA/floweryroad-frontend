@@ -15,12 +15,16 @@ class Meetup extends React.Component {
         }
     }
     componentDidMount() {
-        fetch('http://demo4393270.mockable.io/flower?month=2&day=30')
+        const queryString = require('query-string');
+        const parsed = queryString.parse(this.props.location.search);
+        
+        fetch('http://127.0.0.1:8000/flowers?search=' + parsed.search)
             .then(response => {
                 return response.json()
             })
             .then(response => {
-                return this.setState({ flowerData: response.data, isLoading: false })
+                console.log(response)
+                this.setState({ flowerData: response.flowers, isLoading: false })
             })
     }
     render() {
@@ -29,24 +33,18 @@ class Meetup extends React.Component {
                 <SearchHeader/>
                 <SearchSubheader/>
                 <div className="result">
-                    {/* {this.state.isLoading ? (
+                    {this.state.isLoading ? (
                         <div className="loading">
                             <p>loading...</p>
                         </div>
                     ) : (
                         this.state.flowerData.map((value, index) => {
                             return <SearchFlowerDetail
-                                key={index}
-                                onClick={() => this.props.history.push('/flower/' + value.id)}
-                            >{value.name}</SearchFlowerDetail>
+                                flower={value}
+                            />
                         })
-                    )} */}
-                    <SearchFlowerDetail/>
-                    <SearchFlowerDetail/>
-                    <SearchFlowerDetail/>
-                    <SearchFlowerDetail/>
+                    )}
                 </div>
-                {/* <Route exact path='/meetup/:flowerPk' component={() => <SearchFlowerDetail />} /> */}
             </div>
         );
     }

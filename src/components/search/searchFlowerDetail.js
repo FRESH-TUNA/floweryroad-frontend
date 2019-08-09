@@ -5,26 +5,27 @@ import { withRouter } from "react-router-dom";
 class SearchFlowerDetail extends React.Component {
     constructor(props) {
         super(props)
+        console.log(props)
     }
     render() {
         return (
             <div className="search-flower-detail">
                 <div className="content">
                     <div className="title">
-                        <h3 className="flowerName">풀꽃</h3>
-                        <img src="https://image.flaticon.com/icons/svg/1000/1000997.svg" className="star"/>
-                        <h3>4.5</h3>
+                        <h3 className="flowerName">{this.props.flower.name}</h3>
+                        <img src="https://image.flaticon.com/icons/svg/291/291205.svg" className="star"/>
+                        <h3>{
+                            this.props.flower.star ?
+                            this.props.flower.star : '평가없음'
+                        }</h3>
                     </div>
                     <div className="purposes">
-                        <h4 className="purpose">풀꽃</h4>
-                        <h4 className="purpose">벼어얼</h4>
-                        <h4 className="purpose">풀꽃</h4>
-                        <h4 className="purpose">벼어얼</h4>
-                        <h4 className="purpose">풀꽃</h4>
-                        <h4 className="purpose">벼어얼</h4>
+                        {this.props.flower.purposes.map((value, index) => {
+                            return <h4 className="purpose">{value.name}</h4>
+                        })}
                     </div>
                 </div>
-                <img className="flower-img"/>
+                <img className="flower-img" src={this.props.flower.image.url}/>
             </div>
         );
     }
