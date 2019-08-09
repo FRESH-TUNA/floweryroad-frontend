@@ -6,6 +6,7 @@ import Home from '../../routes/home/home'
 import MeetupList from '../../routes/searchResult/searchFlower'
 import Signin from '../../routes/signin'
 import Signup from '../../routes/signup'
+import SearchHeader from '../../components/common/searchHeader'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path='/meetup' component={() => <MeetupList testprops={'a'} />} />  
         <Route path='/signin' component={() => <Signin testprops={'a'} />} />  
         <Route path='/signup' component={() => <Signup testprops={'a'} />} />  
+        <Route path='/test' component={() => <SearchHeader testprops={'a'} />} />
         <Route path='/' component={() => <Home testprops={'a'} />} />
       </Switch>
     </div>
