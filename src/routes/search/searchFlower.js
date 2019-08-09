@@ -1,7 +1,7 @@
 import React from 'react'
 import SearchHeader from '../../components/common/searchHeader'
 import SearchSubheader from '../../components/search/searchSubheader'
-import '../../css/routes/meetupList.css'
+import '../../css/routes/search.css'
 import { Link, Route, Switch } from 'react-router-dom';
 import { withRouter } from "react-router-dom";
 import SearchFlowerDetail from '../../components/search/searchFlowerDetail'
@@ -25,25 +25,28 @@ class Meetup extends React.Component {
     }
     render() {
         return (
-            <div className="meetup-list">
+            <div className="search">
                 <SearchHeader/>
                 <SearchSubheader/>
-                <div className="meetups">
-                    {this.state.isLoading ? (
-                        <div className="meetups-loading">
+                <div className="result">
+                    {/* {this.state.isLoading ? (
+                        <div className="loading">
                             <p>loading...</p>
                         </div>
                     ) : (
                         this.state.flowerData.map((value, index) => {
-                            return <div
-                                className="meetup"
+                            return <SearchFlowerDetail
                                 key={index}
-                                onClick={() => this.props.history.push('/meetup/' + value.id)}
-                            >{value.name}</div>
+                                onClick={() => this.props.history.push('/flower/' + value.id)}
+                            >{value.name}</SearchFlowerDetail>
                         })
-                    )}
+                    )} */}
+                    <SearchFlowerDetail/>
+                    <SearchFlowerDetail/>
+                    <SearchFlowerDetail/>
+                    <SearchFlowerDetail/>
                 </div>
-                <Route exact path='/meetup/:flowerPk' component={() => <SearchFlowerDetail />} />
+                {/* <Route exact path='/meetup/:flowerPk' component={() => <SearchFlowerDetail />} /> */}
             </div>
         );
     }
