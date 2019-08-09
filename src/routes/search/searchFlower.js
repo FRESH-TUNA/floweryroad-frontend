@@ -1,10 +1,10 @@
 import React from 'react'
-import Header from '../../components/SearchResult/searchFlowerHeader'
-import SubHeader from '../../components/SearchResult/searchFlowerSubheader'
+import SearchHeader from '../../components/common/searchHeader'
+import SearchSubheader from '../../components/search/searchSubheader'
 import '../../css/routes/meetupList.css'
 import { Link, Route, Switch } from 'react-router-dom';
 import { withRouter } from "react-router-dom";
-import SearchFlowerDetail from '../../components/SearchResult/searchFlowerDetail'
+import SearchFlowerDetail from '../../components/search/searchFlowerDetail'
 
 class Meetup extends React.Component {
     constructor(props) {
@@ -26,9 +26,8 @@ class Meetup extends React.Component {
     render() {
         return (
             <div className="meetup-list">
-                <Header />
-                <SubHeader />
-
+                <SearchHeader/>
+                <SearchSubheader/>
                 <div className="meetups">
                     {this.state.isLoading ? (
                         <div className="meetups-loading">

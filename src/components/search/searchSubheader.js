@@ -1,5 +1,5 @@
 import React from 'react'
-import'../../css/components/meetupSubHeader.css'
+import'../../css/components/searchSubHeader.css'
 
 class Meetup extends React.Component {
     constructor(props) {
@@ -9,11 +9,11 @@ class Meetup extends React.Component {
         return (
             <div class="sub-header">
                 <div class="content-wrapper">
-                    <h1>풀꽃 도감</h1>
-                    <div class="search-bar">
-                        <input type="text"></input>
-                        <button></button>
-                    </div>
+                    <h4>이름</h4>
+                    <h4>계절</h4>
+                    <h4>꽃말</h4>
+                    <h4>색깔</h4>
+                    <h4>목적</h4>
                 </div>
             </div>
         );

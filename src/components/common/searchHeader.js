@@ -10,7 +10,7 @@ class SearchHeader extends React.Component {
                     <input type="text" placeholder="족보 검색하기" />
                     <button type="button" onClick={() => this.props.history.push('/meetup')}><img src="https://image.flaticon.com/icons/svg/149/149852.svg" /></button>
                 </div>
-                <button className="auth">자물쇠 마크</button>
+                <button className="auth"></button>
             </div>
         );
     }

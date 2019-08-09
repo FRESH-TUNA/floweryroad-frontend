@@ -3,7 +3,7 @@ import '../../css/components/App.css';
 import { Route, Switch } from 'react-router-dom'
 
 import Home from '../../routes/home/home'
-import SearchResult from '../../routes/searchResult/searchFlower'
+import SearchResult from '../../routes/search/searchFlower'
 import Signin from '../../routes/signin'
 import Signup from '../../routes/signup'
 
