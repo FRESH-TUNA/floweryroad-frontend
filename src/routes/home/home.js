@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, Route, Switch } from 'react-router-dom';
 import { withRouter } from "react-router-dom";
-import FlowerDetail from '../../routes/flowerDetail/homeFlowerDetail'
+import FlowerDetail from '../../routes/flowerDetail/homeFlowerDetail_modal'
 import Recommend from '../../routes/recommend/recommend'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";

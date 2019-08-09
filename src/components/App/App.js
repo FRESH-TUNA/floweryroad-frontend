@@ -6,7 +6,7 @@ import Home from '../../routes/home/home'
 import SearchResult from '../../routes/search/searchFlower'
 import Signin from '../../routes/signin'
 import Signup from '../../routes/signup'
-
+import FlowerDetail from '../../routes/flowerDetail'
 
 function App() {
   return (
@@ -15,6 +15,7 @@ function App() {
         <Route path='/search' component={() => <SearchResult testprops={'a'} />} />  
         <Route path='/signin' component={() => <Signin testprops={'a'} />} />  
         <Route path='/signup' component={() => <Signup testprops={'a'} />} />  
+        <Route path='/flower' component={() => <FlowerDetail testprops={'a'} />} /> 
         <Route path='/' component={() => <Home testprops={'a'} />} />
       </Switch>
     </div>

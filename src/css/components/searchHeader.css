@@ -9,6 +9,8 @@
     
     width: 100%;
     height: 3.5em; 
+
+    background-color: white;
 }
 
 .searchHeader h3 { margin-left: 1em }
