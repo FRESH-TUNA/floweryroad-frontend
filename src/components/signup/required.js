@@ -19,7 +19,7 @@ class Signup extends React.Component {
         return (
             <div className="signup">
                 <div className="body">
-                    <h1>필요</h1>
+                    <h1>조인 어스</h1>
                     <div className="input-box">
                         <input type="text" placeholder="email"/>
                         <input type="text" placeholder="password"/>
