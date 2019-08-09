@@ -1,5 +1,5 @@
 import React from 'react'
-import'../../css/meetupSubHeader.css'
+import'../../css/components/meetupSubHeader.css'
 
 class Meetup extends React.Component {
     constructor(props) {

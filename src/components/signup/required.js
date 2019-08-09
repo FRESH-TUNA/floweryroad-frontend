@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../css/signup.css'
+import '../../css/routes/signup.css'
 import { withRouter } from "react-router-dom";
 
 

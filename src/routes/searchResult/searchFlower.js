@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../../components/SearchResult/searchFlowerHeader'
 import SubHeader from '../../components/SearchResult/searchFlowerSubheader'
-import '../../css/meetupList.css'
+import '../../css/routes/meetupList.css'
 import { Link, Route, Switch } from 'react-router-dom';
 import { withRouter } from "react-router-dom";
 import SearchFlowerDetail from '../../components/SearchResult/searchFlowerDetail'
