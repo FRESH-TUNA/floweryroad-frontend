@@ -5,6 +5,7 @@ import '../../css/routes/search.css'
 import { Link, Route, Switch } from 'react-router-dom';
 import { withRouter } from "react-router-dom";
 import SearchFlowerDetail from '../../components/search/searchFlowerDetail'
+import axios from 'axios'
 
 class Meetup extends React.Component {
     constructor(props) {
@@ -18,13 +19,10 @@ class Meetup extends React.Component {
         const queryString = require('query-string');
         const parsed = queryString.parse(this.props.location.search);
         
-        fetch('http://127.0.0.1:8000/flowers?search=' + parsed.search)
-            .then(response => {
-                return response.json()
-            })
+        axios('http://127.0.0.1:8000/flowers?search=' + parsed.search)
             .then(response => {
                 console.log(response)
-                this.setState({ flowerData: response.flowers, isLoading: false })
+                this.setState({ flowerData: response.data.flowers, isLoading: false })
             })
     }
     render() {
