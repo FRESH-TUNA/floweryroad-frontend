@@ -12,10 +12,13 @@ function App() {
   return (
     <div className="App">
       <Switch>
-        <Route path='/search' component={() => <SearchResult testprops={'a'} />} />  
-        <Route path='/signin' component={() => <Signin testprops={'a'} />} />  
-        <Route path='/signup' component={() => <Signup testprops={'a'} />} />  
-        <Route path='/flower' component={() => <FlowerDetail testprops={'a'} />} /> 
+        <Route path='/search' component={() => <SearchResult/>} />  
+        
+        <Route path='/signin' component={() => <Signin/>} />  
+        <Route path='/signup' component={() => <Signup/>} />  
+
+        <Route path='/flowers/:id' component={() => <FlowerDetail/>} /> 
+        
         <Route path='/' component={() => <Home testprops={'a'} />} />
       </Switch>
     </div>

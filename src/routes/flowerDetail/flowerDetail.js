@@ -1,7 +1,7 @@
 import React from 'react'
 import  '../../css/routes/flowerDetail.css'
 import { withRouter } from "react-router-dom";
-
+import axios from 'axios';
 import SearchHeader from '../../components/common/searchHeader';
 import Comment from '../../components/flowerDetail/comment';
 
@@ -12,82 +12,93 @@ import "slick-carousel/slick/slick-theme.css";
 class FlowerDetail extends React.Component {
     constructor(props) {
         super(props)
+        this.state = {
+            isLoading: true,
+            flower: { }
+        }
+    }
+
+    componentDidMount() {
+        axios('http://127.0.0.1:8000/flowers/' + this.props.match.params.id)
+            .then(response => this.setState({ flower: response.data }))
+            .then(() => {
+                return axios(
+                    'http://127.0.0.1:8000/flowers/' + 
+                    this.props.match.params.id +
+                    '/comments')})
+            .then(response => {console.log(response.data); this.setState({comments: response.data.comments, isLoading: false});})
     }
     render() {
         const settings = {
-            dots: true,
+            dots: false,
+            infinite: false,
             speed: 500,
-            slidesToShow: 2,
-            slidesToScroll: 2,
+            slidesToShow: 3,
+            slidesToScroll: 3,
         };
 
         return (
             <div className="flower-detail">
                 <SearchHeader/>
-                <div className="main">
-                    <img src="https://image.flaticon.com/icons/svg/1898/1898786.svg"/>
-                    <div>
-                        <div className="title">
-                            <h1>풀꽃</h1>
-                            <img src="https://image.flaticon.com/icons/svg/1000/1000997.svg" className="star"/>
-                            <h1>4.0</h1>
-                        </div>
-                        <div className="languages">
-                        <h3>색상</h3>
-                            <div>
-                                <h4 className="purpose">풀꽃</h4>
-                                <h4 className="purpose">벼어얼</h4>
-                                <h4 className="purpose">풀꽃</h4>
-                                <h4 className="purpose">벼어얼</h4>
-                                <h4 className="purpose">풀꽃</h4>
-                                <h4 className="purpose">벼어얼</h4>
+                    {this.state.isLoading ? 
+                    (<div className="main"><h1>loading...</h1></div>) :
+                    (<div className="main">
+                        <img src={this.state.flower.images[0].url}/>
+                        <div className="flower-header">
+                            <div className="title">
+                                <h2>{this.state.flower.name}</h2>
+                                <img src="https://image.flaticon.com/icons/svg/291/291205.svg" className="star"/>
+                                <h2>{this.state.flower.star ? this.state.flower.star : '평가없음'}</h2>
+                            </div>
+                            <div className="languages">
+                                <h3>꽃말</h3>
+                                <div>
+                                    {this.state.flower.languages.map(value => {
+                                        return <h5>{value.name}</h5>
+                                    })}
+                                </div>
+                            </div>
+                            <div className="purposes">
+                                <h3>목적</h3>
+                                <div>
+                                    {this.state.flower.purposes.map(value => {
+                                        return <h5>{value.name}</h5>
+                                    })}
+                                </div>
+                            </div>
+                            <div className="colors">
+                                <h3>색상</h3>
+                                <div>
+                                    {this.state.flower.colors.map(value => {
+                                        return <h5>{value.name}</h5>
+                                    })}
+                                </div>
                             </div>
                         </div>
-                        <div className="purposes">
-                        <h3>색상</h3>
-                            <div>
-                                <h4 className="purpose">풀꽃</h4>
-                                <h4 className="purpose">벼어얼</h4>
-                                <h4 className="purpose">풀꽃</h4>
-                                <h4 className="purpose">벼어얼</h4>
-                                <h4 className="purpose">풀꽃</h4>
-                                <h4 className="purpose">벼어얼</h4>
-                            </div>
+                    </div>)
+                }
+
+                { this.state.isLoading ? 
+                    (<div className="description"/>) : (
+                    <div className="description">
+                        <h3>꽃 설명</h3>
+                        <p>{this.state.flower.description}</p>
+                    </div>)
+                }
+
+                { this.state.isLoading ? 
+                    (<div className="comments"/>) : (
+                    <div className="comments">
+                        <h3>댓글</h3>
+                        <div className="slide-wrapper">
+                            <Slider {...settings}>
+                                {this.state.comments.map(value => {
+                                    return <Comment comment={value}/> 
+                                })}
+                            </Slider>
                         </div>
-                        <div className="colors">
-                            <h3>색상</h3>
-                            <div>
-                                <h4 className="purpose">풀꽃</h4>
-                                <h4 className="purpose">벼어얼</h4>
-                                <h4 className="purpose">풀꽃</h4>
-                                <h4 className="purpose">벼어얼</h4>
-                                <h4 className="purpose">풀꽃</h4>
-                                <h4 className="purpose">벼어얼</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="description">
-                    <h3>꽃 설명</h3>
-                    <p>ㅁㄴㅇㄹㅁㄴ아ㅣㅓ롬낭러ㅗㅁ나ㅣ어ㅗㄹ마너오람너ㄴㅇㄹㄴㅁㅇㄹㅁㄴㅇ라ㅓㅁㄴㅇ라ㅓㅁㄴㅇ라ㅓㅁㄴㅇ라ㅓㄴㄹ아ㅓㅁㄴ라먼ㅇㄹㅁ나ㅓㅇㄹㅁ나ㅓㅇㄹ마넝라넘ㅇ럼ㄴㅇㄹㄴㅁ아ㅓ</p>
-                </div>
-                <div className="comments">
-                    <h3>댓글</h3>
-                    <Slider {...settings}>
-                        <Comment>
-                            <img src="http://placekitten.com/g/400/200" />
-                        </Comment>
-                        <Comment>
-                            <img src="http://placekitten.com/g/400/200" />
-                        </Comment>
-                        <Comment>
-                            <img src="http://placekitten.com/g/400/200" />
-                        </Comment>
-                        <Comment>
-                            <img src="http://placekitten.com/g/400/200" />
-                        </Comment>
-                    </Slider>
-                </div>
+                    </div>)
+                }
             </div>
         );
     }

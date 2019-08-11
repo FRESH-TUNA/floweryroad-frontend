@@ -46,7 +46,7 @@
 
 .searchHeader .auth { 
     width: 30px; height: 30px; 
-    background-color:rgb(254, 245, 254); 
+    background-color: white; 
     background-image: url("https://image.flaticon.com/icons/svg/1000/1000997.svg");
     background-repeat: no-repeat;
     border: none;

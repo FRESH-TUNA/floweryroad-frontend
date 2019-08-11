@@ -1,49 +1,79 @@
-.flower-detail {
+@font-face { font-family: 'Arita-dotum-Medium'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Arita-dotum-Medium.woff') format('woff'); font-weight: normal; font-style: normal; }.flower-detail {
     display: flex;
     flex-flow: column;
     align-items: center;
 
     width: 100%;
     height: 100%;
-    padding-top: 3.5em; 
+    padding-top: 4em; 
 
     background-color: rgb(230, 230, 230)
 }
+
+.flower-detail > * { margin-bottom: 0.5em }
 
 .flower-detail .main {
     display: flex;
     align-items: center;
     width: 700px;
-    height: 350px;
-    padding: 20px;
+    padding: 25px;
 
     background-color: white;
+    font-family: 'Arita-dotum-Medium'
 }
+
 .flower-detail .description {
+    position: relative;
     width: 700px;
     height: 100px;
-    padding: 20px;
+    padding: 60px 25px 25px 25px;
 
     background-color: white;
+    font-family: 'Arita-dotum-Medium'
 }
+
+.flower-detail .description > h3 {
+    position: absolute;
+    top: 25px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+
+.flower-detail .description > p {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    height: 100%;
+    overflow: scroll;
+}
+
 .flower-detail .comments {
     width: 700px;
     height: 300px;
 
-    padding: 20px;
+    padding: 25px;
 
     display: flex;
     flex-flow: column;
-    align-items: center;
+    justify-content: space-between;
 
     background-color: white;
+    font-family: 'Arita-dotum-Medium'
 }
 
-.flower-detail .main img{
-    width: 250px;
-    height: 250px;
-    padding: 10px;
-    margin-right: 10px; 
+.flower-detail .comments > h3{
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+
+.flower-detail .comments > .slide-wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+.flower-detail .main > img{
+    width: 346.81px;
+    height: 100%;
+    margin-right: 25px;
 }
 
 .flower-detail .main > div{
@@ -53,70 +83,66 @@
     flex-grow: 1;
 }
 
-.flower-detail .main div .title {
+.flower-detail .main > div .title {
     display: flex;
     flex-flow: row;
     align-items: center;
-    height: 61.8px;
-    padding-left: 10px;
+    justify-content: flex-start;
+    height: 3em;
+
+    margin-bottom: 0.6em;
 }
 
-.flower-detail .main div .title img {
-    margin-left: 32px;
-    width: 32px;
-    height: 32px;
+.flower-detail .main > div .title > img {
+    margin-left: 30px;
+    width: 30px;
+    height: 30px;
 }
 
-.flower-detail .main div .title h1 {
+.flower-detail .main > div .title > h2 {
     margin-block-start: 0em;
     margin-block-end: 0em;
 }
 
-.flower-detail .main div .colors{
+.flower-detail .main > div > div{
     display: flex;
     flex-flow: column;
     flex-grow: 1;
     justify-content: center;
+    margin-bottom: 0.3em;
 } 
 
-.flower-detail .main div .purposes{
+.flower-detail .main > div > div > div {
     display: flex;
-    flex-flow: column;
-    flex-grow: 1;
-    justify-content: center;
-} 
-
-.flower-detail .main div .languages {
-    display: flex;
-    flex-flow: column;
-    flex-grow: 1;
-    justify-content: center;
-} 
-
-.flower-detail .main div div div {
-    display: flex;
+    align-items: flex-start;
     flex-flow: row;
-    align-items: center;
+    flex-wrap: wrap;
+    overflow: scroll;
+    height: 4em;
 } 
 
-.flower-detail .main div div h3 {
-    margin-block-start: 0em;
-    margin-block-end: 0em;
-} 
-
-.flower-detail .main div div h4 {
+.flower-detail .main > div > div > div > h5 {
     margin-block-start: 0em;
     margin-block-end: 0em;
     border: 1px solid black;
-    margin-right: 5px;
+    border-radius: 1em;
+    margin-right: 0.3em;
+    margin-bottom: 0.3em;
+    padding: 0.3em;
+} 
+
+.flower-detail .main > div > div > h3 {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-bottom: 0.3em;
 } 
 
 .flower-detail .slick-slider {  
-    width: 420px;
+    width: 620px;
 }
+.flower-detail .slick-prev:before, .flower-detail .slick-next:before { color: pink; }
+
+.flower-detail .slick-prev { left: -28px; }
 
 
 
-.flower-detail .slick-next, .slick-prev { border: 1px solid black; }
-
-.flower-detail .slick-slide > div > div { display: flex; } 

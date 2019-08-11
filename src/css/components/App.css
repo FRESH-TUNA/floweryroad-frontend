@@ -7,6 +7,6 @@ html, body, #root, .App {
   margin: 0;
 }
 
-html * {
+html {
   font-family: 'NotoSerifKR'
 }
