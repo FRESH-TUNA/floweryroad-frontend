@@ -4,6 +4,7 @@
   flex-flow: column;
   align-items: center;
   justify-content: center;
+  background-color: rgb(247, 247, 243);
 }
 
 .home header { 

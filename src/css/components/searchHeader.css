@@ -23,7 +23,9 @@
 
     display: flex;
     justify-content: flex-end;  
-    border: 1px solid black;
+    
+    font-family: 'Arita-dotum-Medium';
+    background-color: rgb(233, 233, 233);
 }
 
 .searchHeader .search-bar input{
@@ -32,6 +34,7 @@
     font-size: 1.5em;
     padding: 0 1em;
     border-style: none;
+    background-color: rgb(233, 233, 233);
 }
 
 .searchHeader .search-bar button {
@@ -39,6 +42,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border-color: rgb(233, 233, 233);
+    background-color: rgb(233, 233, 233);
 } 
 .searchHeader .search-bar button > img{ width: 2.5em; }
 

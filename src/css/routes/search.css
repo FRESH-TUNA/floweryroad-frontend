@@ -2,6 +2,7 @@
     width: 100%;
     height: 100%;
     margin-top: 5.5em; 
+    background-color: rgb(247, 247, 243);
 }
 
 .search .loading {
@@ -15,5 +16,5 @@
     flex-flow: column;
     align-items: center;
     width: 100%;
-    border: 1px solid black;
+    background-color: rgb(247, 247, 243);
 }

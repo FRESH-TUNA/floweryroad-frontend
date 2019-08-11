@@ -1,4 +1,4 @@
-@font-face { font-family: 'Arita-dotum-Medium'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Arita-dotum-Medium.woff') format('woff'); font-weight: normal; font-style: normal; }.flower-detail {
+.flower-detail {
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -7,7 +7,7 @@
     height: 100%;
     padding-top: 4em; 
 
-    background-color: rgb(230, 230, 230)
+    background-color: rgb(247, 247, 243);
 }
 
 .flower-detail > * { margin-bottom: 0.5em }

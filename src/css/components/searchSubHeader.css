@@ -1,3 +1,4 @@
+
 .sub-header {
     position: fixed;
     top: 3.5em;
@@ -8,7 +9,9 @@
 
     display: flex;
     align-items: center;
-    border-bottom: 1px solid black;
+
+    font-family: 'Arita-dotum-Medium';
+    background-color: white;
 }
 
 .sub-header .content-wrapper{

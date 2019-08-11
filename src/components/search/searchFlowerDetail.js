@@ -5,7 +5,6 @@ import { withRouter } from "react-router-dom";
 class SearchFlowerDetail extends React.Component {
     constructor(props) {
         super(props)
-        console.log(props)
     }
     render() {
         return (
@@ -21,6 +20,12 @@ class SearchFlowerDetail extends React.Component {
                     </div>
                     <div className="purposes">
                         {this.props.flower.purposes.map((value, index) => {
+                            return <h4 className="purpose">{value.name}</h4>
+                        })}
+                        {this.props.flower.purposes.map((value, index) => {
+                            return <h4 className="purpose">{value.name}</h4>
+                        })}
+                         {this.props.flower.purposes.map((value, index) => {
                             return <h4 className="purpose">{value.name}</h4>
                         })}
                     </div>

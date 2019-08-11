@@ -15,13 +15,27 @@ class Meetup extends React.Component {
             flowerData: []
         }
     }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.location !== this.props.location) {
+            const queryString = require('query-string');
+            const parsed = queryString.parse(nextProps.location.search);
+
+            this.setState({ isLoading: true },
+                () => {axios('http://127.0.0.1:8000/flowers?search=' + parsed.search)
+                .then(response => {
+                    this.setState({ flowerData: response.data.flowers, isLoading: false })
+                })
+            })
+        }
+    }
+
     componentDidMount() {
         const queryString = require('query-string');
         const parsed = queryString.parse(this.props.location.search);
         
         axios('http://127.0.0.1:8000/flowers?search=' + parsed.search)
             .then(response => {
-                console.log(response)
                 this.setState({ flowerData: response.data.flowers, isLoading: false })
             })
     }

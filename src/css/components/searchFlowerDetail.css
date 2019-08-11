@@ -1,16 +1,15 @@
 .search-flower-detail {
     display: flex;
 
-    height: 80px;
     width: 500px;
     margin: 0.8em 0;
-    border: 1px solid black;
 
     padding: 10px;
+    font-family: 'Arita-dotum-Medium';
+    background-color: white;
 }
 
 .search-flower-detail .content {
-    height: 80px;
     flex-grow: 1;
     display: flex;
     flex-flow: column;
@@ -35,14 +34,27 @@
     height: 19px;
 }
 
-.search-flower-detail .title { display: flex; }
+.search-flower-detail .title { 
+    display: flex; 
+    margin-bottom: 10px;
+}
 
 .search-flower-detail .flowerName { margin-right: 1em; }
 
-.search-flower-detail .purposes {display: flex;}
+.search-flower-detail .purposes {
+    display: flex;
+    flex-wrap: wrap;
+    width: 400px;
+}
 
 .search-flower-detail .purpose {
-    margin: 0px 5px;
+    margin: 0px 5px 5px 0px;
+    padding: 5px;
     border: 1px solid black;
     border-radius: 1em;
+}
+
+.search-flower-detail h4 { 
+    margin-block-start: 0em;
+    margin-block-end: 0em;
 }

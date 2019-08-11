@@ -49,7 +49,7 @@ class Home extends React.Component {
                     <input type="text" placeholder="족보 검색하기" onChange={(e) => {this.handleQuery(e)}}/>
                     <button type="button" onClick={() => this.props.history.push('/search?search=' + this.state.search)}><img src="https://image.flaticon.com/icons/svg/149/149852.svg" /></button>
                 </div>
-                <button type="button" onClick={() => this.props.history.push('/recommend')}>화제의 꽃</button>
+                {/* <button type="button" onClick={() => this.props.history.push('/recommend')}>화제의 꽃</button> */}
                 {/* <div className="slider">
                     <Slider {...settings}>
                         <div>

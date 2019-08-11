@@ -12,7 +12,6 @@ class Signup extends React.Component {
                 "password": null,
             }
         };
-        console.log(this.props.testChangeComponent)
     }
 
     render() {

@@ -26,7 +26,7 @@ class FlowerDetail extends React.Component {
                     'http://127.0.0.1:8000/flowers/' + 
                     this.props.match.params.id +
                     '/comments')})
-            .then(response => {console.log(response.data); this.setState({comments: response.data.comments, isLoading: false});})
+            .then(response => {this.setState({comments: response.data.comments, isLoading: false});})
     }
     render() {
         const settings = {
