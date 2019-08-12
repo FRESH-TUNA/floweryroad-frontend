@@ -1,5 +1,5 @@
 import React from 'react'
-import  '../../css/flowerDetail.css'
+import  '../../css/routes/flowerDetail.css'
 import { withRouter } from "react-router-dom";
 
 class SearchFlowerDetail extends React.Component {

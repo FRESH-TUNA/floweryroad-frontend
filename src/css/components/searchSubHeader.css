@@ -1,18 +1,25 @@
+
 .sub-header {
     position: fixed;
-    top: 69.81px;
+    top: 3.5em;
+    left: 0;
+
     width: 100%;
-    
+    height: 2em; 
+
     display: flex;
     align-items: center;
-    justify-content: center;
+
+    font-family: 'Arita-dotum-Medium';
+    background-color: white;
 }
 
 .sub-header .content-wrapper{
-    width: 700px;
+    width: 400px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-left: 15%; 
 }
 
 .sub-header .search-bar {

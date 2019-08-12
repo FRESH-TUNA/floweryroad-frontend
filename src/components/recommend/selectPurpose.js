@@ -1,5 +1,5 @@
 import React from 'react'
-import  '../../css/selectPurpose.css'
+import  '../../css/components/selectPurpose.css'
 
 class SelectPurpose extends React.Component {
     constructor(props) {

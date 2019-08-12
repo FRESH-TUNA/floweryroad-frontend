@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../css/signup.css'
+import '../../css/routes/signup.css'
 import { withRouter } from "react-router-dom";
 
 
@@ -18,7 +18,7 @@ class Signup extends React.Component {
         return (
             <div className="signup">
                 <div className="body">
-                    <h1>회원가입</h1>
+                    <h1>취향 선택</h1>
                     <div className="input-box">
                         <input type="text" placeholder="email"/>
                         <input type="text" placeholder="password"/>

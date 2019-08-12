@@ -13,7 +13,7 @@
     position: absolute;
     width :700px; height: 500px;
     border-radius: 10px;
-    background-image: url("../assets/img/background.png");
+    background-image: url("../../assets/img/background.png");
     display: flex;
     flex-flow: column;
     justify-content: space-between;

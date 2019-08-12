@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../css/signup.css'
+import '../../css/routes/signup.css'
 import { withRouter } from "react-router-dom";
 import { Extra, Required } from "../../components/signup"
 // import Extra from "../../components/signup/extra"

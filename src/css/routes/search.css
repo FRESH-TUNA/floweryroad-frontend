@@ -1,0 +1,20 @@
+.search {
+    width: 100%;
+    height: 100%;
+    margin-top: 5.5em; 
+    background-color: rgb(247, 247, 243);
+}
+
+.search .loading {
+    position: fixed;
+    top: 50%;    
+    left: 50%;
+}
+
+.search .result {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 100%;
+    background-color: rgb(247, 247, 243);
+}

@@ -10,7 +10,8 @@ import ReduxThunk from 'redux-thunk';
 
 
 import axios from 'axios';
-axios.defaults.baseURL = 'http://localhost:8000'
+
+axios.defaults.baseURL = 'http://ec2-15-164-210-94.ap-northeast-2.compute.amazonaws.com'
 
 const rootReducer = combineReducers({
     auth

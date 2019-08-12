@@ -1,5 +1,5 @@
 import React from 'react'
-import  '../../css/recommend.css'
+import  '../../css/components/recommend.css'
 import { withRouter } from "react-router-dom";
 import SelectColor from "../../components/recommend/selectColor"
 import SelectPurpose from "../../components/recommend/selectPurpose"
