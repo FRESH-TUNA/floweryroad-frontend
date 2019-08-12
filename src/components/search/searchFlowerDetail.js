@@ -22,12 +22,6 @@ class SearchFlowerDetail extends React.Component {
                         {this.props.flower.purposes.map((value, index) => {
                             return <h4 className="purpose">{value.name}</h4>
                         })}
-                        {this.props.flower.purposes.map((value, index) => {
-                            return <h4 className="purpose">{value.name}</h4>
-                        })}
-                         {this.props.flower.purposes.map((value, index) => {
-                            return <h4 className="purpose">{value.name}</h4>
-                        })}
                     </div>
                 </div>
                 <img className="flower-img" src={this.props.flower.image.url}/>
