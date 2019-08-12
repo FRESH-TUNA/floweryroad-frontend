@@ -19,11 +19,11 @@ class FlowerDetail extends React.Component {
     }
 
     componentDidMount() {
-        axios('http://127.0.0.1:8000/flowers/' + this.props.match.params.id)
+        axios('/flowers/' + this.props.match.params.id)
             .then(response => this.setState({ flower: response.data }))
             .then(() => {
                 return axios(
-                    'http://127.0.0.1:8000/flowers/' + 
+                    '/flowers/' + 
                     this.props.match.params.id +
                     '/comments')})
             .then(response => {this.setState({comments: response.data.comments, isLoading: false});})
