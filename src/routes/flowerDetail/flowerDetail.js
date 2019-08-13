@@ -1,6 +1,6 @@
 import React from 'react'
 import  '../../css/routes/flowerDetail.css'
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import axios from 'axios';
 import SearchHeader from '../../components/common/searchHeader';
 import Comment from '../../components/flowerDetail/comment';
@@ -54,7 +54,8 @@ class FlowerDetail extends React.Component {
                                 <h3>꽃말</h3>
                                 <div>
                                     {this.state.flower.languages.map(value => {
-                                        return <h5>{value.name}</h5>
+                                        return <Link to={"/search?language=" + value.name} onClick={(event) => event.stopPropagation()}>
+                                        <h5 className="purpose">{value.name}</h5></Link>
                                     })}
                                 </div>
                             </div>
@@ -62,7 +63,9 @@ class FlowerDetail extends React.Component {
                                 <h3>목적</h3>
                                 <div>
                                     {this.state.flower.purposes.map(value => {
-                                        return <h5>{value.name}</h5>
+                                        return <Link to={"/search?purpose=" + value.name} onClick={(event) => event.stopPropagation()}>
+                                        <h5 className="purpose">{value.name}</h5>
+                                    </Link>;
                                     })}
                                 </div>
                             </div>

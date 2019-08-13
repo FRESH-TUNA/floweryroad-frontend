@@ -6,56 +6,88 @@ import { Link, Route, Switch } from 'react-router-dom';
 import { withRouter } from "react-router-dom";
 import SearchFlowerDetail from '../../components/search/searchFlowerDetail'
 import axios from 'axios'
-
+import getQuery from 'query-string'
 class Meetup extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             isLoading: true,
-            flowerData: []
+            flowerData: [],
         }
     }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.location !== this.props.location) {
-            const queryString = require('query-string');
-            const parsed = queryString.parse(nextProps.location.search);
+            let queryString = require('query-string');
+            queryString = queryString.parse(nextProps.location.search);
+            let url = '/flowers?'
 
+            if (queryString.name)
+                url = '/flowers?name=' + queryString.name
+            else if (queryString.purpose)
+                url = '/flowers?purpose=' + queryString.purpose
+            else if (queryString.language)
+                url = '/flowers?language=' + queryString.language
+            else if (queryString.season) {
+                url = queryString.query ? ('/flowers?search=' + queryString.query + '&season=' + queryString.season)
+                    : ('/flowers?season=' + queryString.season)
+            }
+            else
+                url = '/flowers?search=' + queryString.query
+            console.log(url)
             this.setState({ isLoading: true },
-                () => {axios('/flowers?search=' + parsed.search)
-                .then(response => {
-                    this.setState({ flowerData: response.data.flowers, isLoading: false })
+                () => {
+                    axios(url)
+                        .then(response => {
+                            this.setState({ flowerData: response.data.flowers, isLoading: false })
+                        })
                 })
-            })
         }
     }
 
     componentDidMount() {
-        const queryString = require('query-string');
-        const parsed = queryString.parse(this.props.location.search);
-        
-        axios('/flowers?search=' + parsed.search)
-            .then(response => {
-                this.setState({ flowerData: response.data.flowers, isLoading: false })
-            })
+        let queryString = require('query-string');
+            queryString = queryString.parse(this.props.location.search);
+            let url = '/flowers?'
+
+            if (queryString.name)
+                url = '/flowers?name=' + queryString.name
+            else if (queryString.purpose)
+                url = '/flowers?purpose=' + queryString.purpose
+            else if (queryString.language)
+                url = '/flowers?language=' + queryString.language
+            else if (queryString.season) {
+                url = queryString.query ? ('/flowers?search=' + queryString.query + '&season=' + queryString.season)
+                    : ('/flowers?season=' + queryString.season)
+            }
+            else
+                url = '/flowers?search=' + queryString.query
+            console.log(url)
+            this.setState({ isLoading: true },
+                () => {
+                    axios(url)
+                        .then(response => {
+                            this.setState({ flowerData: response.data.flowers, isLoading: false })
+                        })
+                })
     }
     render() {
         return (
             <div className="search">
-                <SearchHeader/>
-                <SearchSubheader/>
+                <SearchHeader />
+                {(getQuery.parse(this.props.location.search).query) &&
+                    <SearchSubheader />
+                }
                 <div className="result">
                     {this.state.isLoading ? (
                         <div className="loading">
                             <p>loading...</p>
                         </div>
                     ) : (
-                        this.state.flowerData.map((value, index) => {
-                            return <SearchFlowerDetail
-                                flower={value}
-                            />
-                        })
-                    )}
+                            this.state.flowerData.map((value, index) => {
+                                return <Link to={"/flowers/" + value.id}><SearchFlowerDetail flower={value} key={index} /></Link>
+                            })
+                        )}
                 </div>
             </div>
         );

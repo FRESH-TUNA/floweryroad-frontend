@@ -121,7 +121,7 @@
     height: 4em;
 } 
 
-.flower-detail .main > div > div > div > h5 {
+.flower-detail .main > div > div > div  h5 {
     margin-block-start: 0em;
     margin-block-end: 0em;
     border: 1px solid black;

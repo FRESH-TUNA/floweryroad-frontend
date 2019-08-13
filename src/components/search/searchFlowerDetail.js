@@ -1,6 +1,6 @@
 import React from 'react'
 import  '../../css/components/searchFlowerDetail.css'
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 class SearchFlowerDetail extends React.Component {
     constructor(props) {
@@ -20,7 +20,9 @@ class SearchFlowerDetail extends React.Component {
                     </div>
                     <div className="purposes">
                         {this.props.flower.purposes.map((value, index) => {
-                            return <h4 className="purpose">{value.name}</h4>
+                            return <Link to={"/search?purpose=" + value.name} onClick={(event) => event.stopPropagation()}>
+                                <h4 className="purpose">{value.name}</h4>
+                            </Link>;
                         })}
                     </div>
                 </div>
