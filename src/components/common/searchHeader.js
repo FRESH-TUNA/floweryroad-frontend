@@ -23,7 +23,11 @@ class SearchHeader extends React.Component {
                     <input type="text" placeholder="이름, 꽃말, 목적, 색상 으로 검색하기" onChange={(event) => this.setState({search: event.target.value})} onKeyUp ={(event) => this.search(event)}/>
                     <button type="button" className="search-button" onClick={() => this.props.history.push('/search?query=' + this.state.search)}><img src="https://image.flaticon.com/icons/svg/149/149852.svg" /></button>
                 </div>
-                <button className="auth"></button>
+                <button className="auth" onClick={() => this.props.history.push('/')}></button>
+                <ul>
+                    <Link><li>로그인</li></Link>
+                    <Link><li>회원가입</li></Link>
+                </ul>
             </div>
         );
     }
