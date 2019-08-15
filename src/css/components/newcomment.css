@@ -1,0 +1,10 @@
+.newcomment { justify-content: space-around; }
+
+.newcomment input { height: 100px; }
+
+.newcomment .buttons { 
+    display: flex;  
+    flex-flow: row;
+}
+
+.newcomment button { width: 100%; }

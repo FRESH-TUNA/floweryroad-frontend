@@ -1,15 +1,20 @@
 import { handleActions } from 'redux-actions';
-import {OBTAIN_TOKEN_PENDING, OBTAIN_TOKEN_SUCCESS, OBTAIN_TOKEN_FAILURE} from '../actions/authAction'
+// import {OBTAIN_TOKEN_PENDING, OBTAIN_TOKEN_SUCCESS, OBTAIN_TOKEN_FAILURE} from '../actions/authAction'
+
+export const OBTAIN_TOKEN_PENDING = 'OBTAIN_TOKEN_PENDING';
+export const OBTAIN_TOKEN_SUCCESS = 'OBTAIN_TOKEN_SUCCESS';
+export const OBTAIN_TOKEN_FAILURE = 'OBTAIN_TOKEN_FAILURE';
 
 export const initialState = {
     pending: false,
     error: false,
     isLogin: false,
     data: {
-        jwt: localStorage.getItem('jwt'),
+        access: localStorage.getItem('acc'),
+        refresh: localStorage.getItem('refresh'),
         username: localStorage.getItem('nickname'),
         endpoints: {
-            obtainJWT: 'api/token',
+            obtainJWT: '/signin',
             refreshJWT: 'api/refresh'
         },
     }
@@ -24,7 +29,7 @@ export default handleActions({
         };
     },
     [OBTAIN_TOKEN_SUCCESS]: (state, action) => {
-        const {jwt, username} = action.payload
+        const {access, refresh} = action.payload
 
         return {
             ...state,
@@ -32,7 +37,7 @@ export default handleActions({
             isLogin: true,
             data: {
                 ...state.data,
-                jwt, username
+                access, refresh
             }
         };
     },

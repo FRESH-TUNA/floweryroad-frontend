@@ -1,10 +1,8 @@
 import axios from 'axios';
 import {initialState} from '../reducers/authReducer'
+import { OBTAIN_TOKEN_PENDING, OBTAIN_TOKEN_SUCCESS, OBTAIN_TOKEN_FAILURE} from '../reducers/authReducer'
 axios.defaults.baseURL = 'http://localhost:8000'
 
-export const OBTAIN_TOKEN_PENDING = 'OBTAIN_TOKEN_PENDING';
-export const OBTAIN_TOKEN_SUCCESS = 'OBTAIN_TOKEN_SUCCESS';
-export const OBTAIN_TOKEN_FAILURE = 'OBTAIN_TOKEN_FAILURE';
 
 function obtainTokenResponse(payload) {
     return axios.post(initialState.data.endpoints.obtainJWT, payload)
@@ -18,9 +16,11 @@ export function obtainToken(payload) {
         // 여기서 만든 promise 를 return 해줘야, 나중에 컴포넌트에서 호출 할 때 getPost().then(...) 을 할 수 있습니다
         try {
             const response = await obtainTokenResponse(payload)
+            localStorage.setItem('acc', response.data.access)
+            localStorage.setItem('ref', response.data.refresh)
             dispatch({
                 type: OBTAIN_TOKEN_SUCCESS,
-                payload: {jwt: 'jwt ' + response.data.token, username: payload.username}
+                payload: {access: response.data.access, refresh: response.data.refresh}
             })
         }
         catch(error) {
