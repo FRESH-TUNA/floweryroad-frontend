@@ -2,8 +2,6 @@ import React from 'react'
 import '../../css/routes/signup.css'
 import { withRouter } from "react-router-dom";
 import { Extra, Required } from "../../components/signup"
-// import Extra from "../../components/signup/extra"
-// import Required from "../../components/signup/required"
 
 class Signup extends React.Component {
     constructor(props) {
@@ -31,3 +29,4 @@ class Signup extends React.Component {
 }
 
 export default withRouter(Signup);
+

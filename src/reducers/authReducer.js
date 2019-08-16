@@ -29,15 +29,12 @@ export default handleActions({
         };
     },
     [OBTAIN_TOKEN_SUCCESS]: (state, action) => {
-        const {access, refresh} = action.payload
-
         return {
             ...state,
             pending: false,
             isLogin: true,
             data: {
-                ...state.data,
-                access, refresh
+                ...action.payload
             }
         };
     },

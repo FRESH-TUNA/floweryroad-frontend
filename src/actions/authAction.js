@@ -31,3 +31,13 @@ export function obtainToken(payload) {
         }
     }
 }
+
+export function obtainTokenSuccess(data) {
+    console.log(data)
+    return async dispatch => {
+        dispatch({
+            type: OBTAIN_TOKEN_SUCCESS,
+            payload: {...data}
+        })
+    }
+}
