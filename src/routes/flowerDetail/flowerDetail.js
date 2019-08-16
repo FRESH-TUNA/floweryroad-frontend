@@ -23,7 +23,8 @@ class FlowerDetail extends React.Component {
             flower: {},
             newCommentState: false,
             commentsCount: 6,
-            lastCommentPage: 1
+            lastCommentPage: 1,
+            lastCommentPosition: 0
         }
         this.openNewComment = this.openNewComment.bind(this)
         this.closeNewComment = this.closeNewComment.bind(this)
@@ -46,7 +47,8 @@ class FlowerDetail extends React.Component {
                 this.setState({
                     'comments': this.state.comments.concat(response.data.comments),
                     'commentsCount': this.state.commentsCount + this.state.commentsCount,
-                    'lastCommentPage': this.state.lastCommentPage + 1
+                    'lastCommentPage': this.state.lastCommentPage + 1,
+                    'lastCommentPosition': index
                 })
             })
         }
@@ -58,10 +60,7 @@ class FlowerDetail extends React.Component {
 
     openNewComment() {
         this.slider.slickGoTo(0)
-        this.setState({
-            'lastCommentPosition': document.getElementsByClassName('slick-current')[0].getAttribute("data-index"),
-            'newCommentState': true
-        })
+        this.setState({ 'newCommentState': true })
     }
 
     closeNewComment(cancel) {
@@ -93,7 +92,7 @@ class FlowerDetail extends React.Component {
         };
 
         return (
-            <div className="flower-detail">
+            <div className="flower-detail" onClick={() => document.getElementsByClassName('menu')[0].style.display = 'none'}>
                 <SearchHeader />
                 {this.state.isLoading ?
                     (<div className="main"><h1>loading...</h1></div>) :

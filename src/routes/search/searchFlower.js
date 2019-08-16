@@ -21,7 +21,8 @@ class Meetup extends React.Component {
             let queryString = require('query-string');
             queryString = queryString.parse(nextProps.location.search);
             let url = '/flowers?'
-
+            document.documentElement.scrollTop = 0;
+            
             if (queryString.name)
                 url = '/flowers?name=' + queryString.name
             else if (queryString.purpose)
@@ -34,7 +35,7 @@ class Meetup extends React.Component {
             }
             else
                 url = '/flowers?search=' + queryString.query
-            console.log(url)
+
             this.setState({ isLoading: true },
                 () => {
                     axios(url)
@@ -47,33 +48,34 @@ class Meetup extends React.Component {
 
     componentDidMount() {
         let queryString = require('query-string');
-            queryString = queryString.parse(this.props.location.search);
-            let url = '/flowers?'
+        let url = '/flowers?'
+        queryString = queryString.parse(this.props.location.search);
+        document.documentElement.scrollTop = 0;
+        
+        if (queryString.name)
+            url = '/flowers?name=' + queryString.name
+        else if (queryString.purpose)
+            url = '/flowers?purpose=' + queryString.purpose
+        else if (queryString.language)
+            url = '/flowers?language=' + queryString.language
+        else if (queryString.season) {
+            url = queryString.query ? ('/flowers?search=' + queryString.query + '&season=' + queryString.season)
+                : ('/flowers?season=' + queryString.season)
+        }
+        else
+            url = '/flowers?search=' + queryString.query
 
-            if (queryString.name)
-                url = '/flowers?name=' + queryString.name
-            else if (queryString.purpose)
-                url = '/flowers?purpose=' + queryString.purpose
-            else if (queryString.language)
-                url = '/flowers?language=' + queryString.language
-            else if (queryString.season) {
-                url = queryString.query ? ('/flowers?search=' + queryString.query + '&season=' + queryString.season)
-                    : ('/flowers?season=' + queryString.season)
-            }
-            else
-                url = '/flowers?search=' + queryString.query
-            console.log(url)
-            this.setState({ isLoading: true },
-                () => {
-                    axios(url)
-                        .then(response => {
-                            this.setState({ flowerData: response.data.flowers, isLoading: false })
-                        })
-                })
+        this.setState({ isLoading: true },
+            () => {
+                axios(url)
+                    .then(response => {
+                        this.setState({ flowerData: response.data.flowers, isLoading: false })
+                    })
+            })
     }
     render() {
         return (
-            <div className="search">
+            <div className="search" onClick={() => document.getElementsByClassName('menu')[0].style.display = 'none'}>
                 <SearchHeader />
                 {(getQuery.parse(this.props.location.search).query) &&
                     <SearchSubheader />

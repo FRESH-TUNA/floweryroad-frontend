@@ -4,11 +4,12 @@ import { handleActions } from 'redux-actions';
 export const OBTAIN_TOKEN_PENDING = 'OBTAIN_TOKEN_PENDING';
 export const OBTAIN_TOKEN_SUCCESS = 'OBTAIN_TOKEN_SUCCESS';
 export const OBTAIN_TOKEN_FAILURE = 'OBTAIN_TOKEN_FAILURE';
+export const USER_AUTH_DELETE = 'USER_AUTH_DELETE';
 
 export const initialState = {
     pending: false,
     error: false,
-    isLogin: false,
+    isLogin: localStorage.getItem('acc') ? true : false,
     data: {
         access: localStorage.getItem('acc'),
         refresh: localStorage.getItem('refresh'),
@@ -44,6 +45,18 @@ export default handleActions({
             pending: false,
             error: true,
             status: action.payload
+        }
+    },
+
+    [USER_AUTH_DELETE]: (state, action) => {
+        return {
+            ...state,
+            isLogin: false,
+            data: {
+                access: '',
+                refresh: '',
+                nickname: '',
+            }
         }
     }
 }, initialState);

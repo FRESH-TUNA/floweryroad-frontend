@@ -12,6 +12,7 @@
 
     font-family: 'Arita-dotum-Medium';
     background-color: white;
+    z-index: -1;
 }
 
 .sub-header .content-wrapper{

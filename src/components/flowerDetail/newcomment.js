@@ -1,6 +1,7 @@
 import React from 'react'
-import '../../css/components/comment.css'
 import ReactStars from 'react-stars'
+
+import '../../css/components/comment.css'
 import '../../css/components/newcomment.css'
 
 class SearchHeader extends React.Component {
@@ -27,10 +28,10 @@ class SearchHeader extends React.Component {
                         />
                     </div>
                 </div>
-                <input 
+                <textarea 
                     onChange={(event) => this.setState({content: event.target.value})} 
                     value={this.state.content}>
-                </input>
+                </textarea>
                 <div className="buttons">
                     <button onClick={() => this.props.newComment(this.state)}>쓰기</button>
                     <button onClick={() => this.props.closeNewComment(true)}>취소</button>

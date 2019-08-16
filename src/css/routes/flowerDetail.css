@@ -4,9 +4,7 @@
     align-items: center;
 
     width: 100%;
-    height: 100%;
     padding-top: 4em; 
-
     background-color: rgb(247, 247, 243);
 }
 
@@ -42,7 +40,7 @@
 .flower-detail .description > p {
     margin-block-start: 0em;
     margin-block-end: 0em;
-    height: 100%;
+    height: 100px;
     overflow: scroll;
 }
 
@@ -63,11 +61,20 @@
 .flower-detail .comments > h3{
     margin-block-start: 0em;
     margin-block-end: 0em;
+    margin-bottom: 25px;
 }
 
 .flower-detail .comments > .slide-wrapper{
     display: flex;
     justify-content: center;
+}
+
+.flower-detail .comments > button{
+    width: 100px;
+    align-self: flex-end;
+    font-size: 1.17em;
+    margin-top: 25px;
+    border: 0.1em solid black;
 }
 
 .flower-detail .main > img{
@@ -124,11 +131,12 @@
 .flower-detail .main > div > div > div  h5 {
     margin-block-start: 0em;
     margin-block-end: 0em;
-    border: 1px solid black;
     border-radius: 1em;
     margin-right: 0.3em;
     margin-bottom: 0.3em;
     padding: 0.3em;
+
+    background-color: pink;
 } 
 
 .flower-detail .main > div > div > h3 {

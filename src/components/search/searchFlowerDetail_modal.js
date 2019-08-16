@@ -12,7 +12,6 @@ class SearchFlowerDetail extends React.Component {
         this.blockPropagate = this.blockPropagate.bind(this)
     }
     componentDidMount() {
-        console.log(this.props)
         fetch('http://demo4393270.mockable.io/flower/' + this.props.match.params.flowerPk)
             .then(response => {
                 return response.json()

@@ -8,7 +8,7 @@ class SearchFlowerDetail extends React.Component {
     }
     render() {
         return (
-            <div className="search-flower-detail" onClick={() => this.props.history.push('/flowers/' + this.props.flower.id)}>
+            <div className="search-flower-detail">
                 <div className="content">
                     <div className="title">
                         <h3 className="flowerName">{this.props.flower.name}</h3>

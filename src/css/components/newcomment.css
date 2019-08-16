@@ -1,10 +1,23 @@
 .newcomment { justify-content: space-around; }
 
-.newcomment input { height: 100px; }
+.newcomment .header { margin-bottom: 0px;}
+
+.newcomment textarea { 
+    height: 120px;
+    resize: none;
+    font-size: 16px;
+    border: none;
+}
 
 .newcomment .buttons { 
     display: flex;  
     flex-flow: row;
+    justify-content: space-between;
 }
 
-.newcomment button { width: 100%; }
+.newcomment button { 
+    width: 49%;
+    border: none;
+}
+.newcomment button:nth-of-type(1) { background-color: greenyellow; }
+.newcomment button:nth-of-type(2) { background-color: pink; }

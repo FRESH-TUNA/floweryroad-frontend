@@ -1,6 +1,9 @@
 import axios from 'axios';
 import {initialState} from '../reducers/authReducer'
-import { OBTAIN_TOKEN_PENDING, OBTAIN_TOKEN_SUCCESS, OBTAIN_TOKEN_FAILURE} from '../reducers/authReducer'
+import { 
+    OBTAIN_TOKEN_PENDING, OBTAIN_TOKEN_SUCCESS, OBTAIN_TOKEN_FAILURE,
+    USER_AUTH_DELETE
+} from '../reducers/authReducer'
 axios.defaults.baseURL = 'http://localhost:8000'
 
 
@@ -18,6 +21,7 @@ export function obtainToken(payload) {
             const response = await obtainTokenResponse(payload)
             localStorage.setItem('acc', response.data.access)
             localStorage.setItem('ref', response.data.refresh)
+            localStorage.setItem('nick', response.data.nickname)
             dispatch({
                 type: OBTAIN_TOKEN_SUCCESS,
                 payload: {access: response.data.access, refresh: response.data.refresh}
@@ -33,11 +37,26 @@ export function obtainToken(payload) {
 }
 
 export function obtainTokenSuccess(data) {
-    console.log(data)
+    localStorage.setItem('acc', data.access)
+    localStorage.setItem('ref', data.refresh)
+    localStorage.setItem('nick', data.nickname)
+
     return async dispatch => {
         dispatch({
             type: OBTAIN_TOKEN_SUCCESS,
             payload: {...data}
+        })
+    }
+}
+
+export function logout() {
+    return async dispatch => {
+        localStorage.removeItem('acc')
+        localStorage.removeItem('ref')
+        localStorage.removeItem('nick')
+        
+        dispatch({
+            type: USER_AUTH_DELETE,
         })
     }
 }

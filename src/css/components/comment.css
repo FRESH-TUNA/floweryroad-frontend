@@ -4,7 +4,8 @@
     width: 180px;
     height: 180px;
     padding: 10px;
-    border: 1px solid black;
+    background-color: rgb(247, 247, 243);
+    border: 0.1em solid rgb(233, 233, 227);
 }
 .comment h4, .comment p { 
     margin-block-start: 0em;
