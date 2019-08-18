@@ -5,11 +5,13 @@ import { withRouter } from "react-router-dom";
 import FlowerDetail from '../../routes/flowerDetail/homeFlowerDetail_modal'
 import Recommend from '../../routes/recommend/recommend'
 import HomeFlower from '../../components/Home/homeFlower'
+import Header from '../../components/Home/header'
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import '../../css/routes/home.css'
+import '../../css/components/mainHeader.css'
 
 class Home extends React.Component {
     constructor(props) {
@@ -39,7 +41,8 @@ class Home extends React.Component {
         // };
 
         return (
-            <div className="home">
+            <div className="home" onClick={() => document.getElementsByClassName('menu')[0].style.display = 'none'}>
+                <Header />
                 <h1>풀꽃길</h1>
                 <div className="search-bar">
                     <input type="text" placeholder="이름, 꽃말, 목적, 색상 으로 검색하기" onChange={(e) => {this.handleQuery(e)}} onKeyUp ={(event) => this.search(event)}/>

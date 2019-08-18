@@ -4,21 +4,25 @@ import { handleActions } from 'redux-actions';
 export const OBTAIN_TOKEN_PENDING = 'OBTAIN_TOKEN_PENDING';
 export const OBTAIN_TOKEN_SUCCESS = 'OBTAIN_TOKEN_SUCCESS';
 export const OBTAIN_TOKEN_FAILURE = 'OBTAIN_TOKEN_FAILURE';
+
+export const REFRESH_TOKEN_SUCCESS = 'REFRESH_TOKEN_SUCCESS';
 export const USER_AUTH_DELETE = 'USER_AUTH_DELETE';
+export const CHANGE_NICKNAME_SUCCESS = 'CHANGE_NICKNAME_SUCCESS';
 
 export const initialState = {
     pending: false,
     error: false,
     isLogin: localStorage.getItem('acc') ? true : false,
+    endpoints: {
+        obtainJWT: '/signin',
+        refreshJWT: '/token/refresh'
+    },
     data: {
         access: localStorage.getItem('acc'),
-        refresh: localStorage.getItem('refresh'),
-        username: localStorage.getItem('nickname'),
-        endpoints: {
-            obtainJWT: '/signin',
-            refreshJWT: 'api/refresh'
-        },
-    }
+        refresh: localStorage.getItem('ref'),
+        nickname: localStorage.getItem('nic'),
+    },
+    refreshService: null
 };
 
 export default handleActions({
@@ -34,9 +38,10 @@ export default handleActions({
             ...state,
             pending: false,
             isLogin: true,
+            error: false,
             data: {
-                ...action.payload
-            }
+                ...action.payload.data
+            },
         };
     },
     [OBTAIN_TOKEN_FAILURE]: (state, action) => {
@@ -47,16 +52,37 @@ export default handleActions({
             status: action.payload
         }
     },
-
+    [REFRESH_TOKEN_SUCCESS]: (state, action) => {
+        return {
+            ...state,
+            pending: false,
+            error: false,
+            data: {
+                ...state.data,
+                access: action.payload.access
+            }
+        }
+    },
     [USER_AUTH_DELETE]: (state, action) => {
         return {
             ...state,
             isLogin: false,
+            error: false,
             data: {
                 access: '',
                 refresh: '',
                 nickname: '',
-            }
+            },
+        }
+    },
+    [CHANGE_NICKNAME_SUCCESS]: (state, action) => {
+        return {
+            ...state,
+            error: false,
+            data: {
+                ...state.data,
+                nickname: action.payload.data.nickname,
+            },
         }
     }
 }, initialState);

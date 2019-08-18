@@ -87,7 +87,7 @@ class Meetup extends React.Component {
                         </div>
                     ) : (
                             this.state.flowerData.map((value, index) => {
-                                return <Link to={"/flowers/" + value.id}><SearchFlowerDetail flower={value} key={index} /></Link>
+                                return <Link to={"/flowers/" + value.id} key={index} ><SearchFlowerDetail flower={value} /></Link>
                             })
                         )}
                 </div>

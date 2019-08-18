@@ -2,6 +2,7 @@ import React from 'react';
 import '../../css/components/App.css';
 import { Route, Switch } from 'react-router-dom'
 
+import Mypage from '../../routes/mypage/mypage'
 import Home from '../../routes/home/home'
 import SearchResult from '../../routes/search/searchFlower'
 import Signin from '../../routes/signin'
@@ -12,6 +13,7 @@ function App() {
   return (
     <div className="App">
       <Switch>
+        <Route path='/mypage' component={() => <Mypage/>} />  
         <Route path='/search' component={() => <SearchResult/>} />  
         
         <Route path='/signin' component={() => <Signin/>} />  

@@ -8,11 +8,14 @@ class SearchSubHeader extends React.Component {
     }
     render() {
         const queryString = require('query-string');
-        const {query} = queryString.parse(this.props.location.search);
+        let {query} = queryString.parse(this.props.location.search);
+
+        if(query === undefined)
+            query = ''
 
         return (
-            <div class="sub-header">
-                <div class="content-wrapper">
+            <div className="sub-header">
+                <div className="content-wrapper">
                     <Link to={"/search?query=" + query}><h4>전체검색</h4></Link>
                     <Link to={"/search?query=" + query + "&name=" + query}><h4>이름</h4></Link>
                     <Link to={"/search?query=" + query + "&language=" + query}><h4>꽃말</h4></Link>

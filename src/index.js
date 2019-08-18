@@ -19,7 +19,7 @@ const rootReducer = combineReducers({
     auth
 });
 
-const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
+export const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
 
 ReactDOM.render(
     <Provider store={store}>

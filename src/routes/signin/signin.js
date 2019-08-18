@@ -11,8 +11,8 @@ class Signin extends React.Component {
         super(props);
         this.state = {
             userData: {
-                "email": null,
-                "password": null,
+                "email": '',
+                "password": '',
             }
         };
         this.login = this.login.bind(this)
@@ -23,11 +23,20 @@ class Signin extends React.Component {
     async login() {
         await this.props.Auth.obtainToken(this.state.userData)
         this.props.error ? 
-        this.errorHandling(this.props.error) :
+        this.errorHandling() :
         this.props.history.push('/')
     }
-    errorHandling(error) {
-        console.log(error)
+    errorHandling() {
+        if(this.props.status === 401)
+            alert('비밀번호나 이메일이 잘못되었습니다!')
+        else {
+            let error = '다음 필드가 비어있습니다!\n'
+            if(this.state.userData.email === '')
+                error += '이메일\n'
+            if(this.state.userData.password === '')
+                error += '비밀번호\n'
+            alert(error)
+        }
     }
     onChangeHandler(event) {
         var newState = {...this.state}
@@ -48,7 +57,7 @@ class Signin extends React.Component {
                         <input type="text" placeholder="email" 
                             onChange={event => this.onChangeHandler(event)}
                         />
-                        <input type="text" placeholder="password" 
+                        <input type="password" placeholder="password" 
                             onChange={event => this.onChangeHandler(event)}
                         />
                     </div>
@@ -64,7 +73,8 @@ export default connect(
     (state) => ({
         loading: state.auth.pending,
         error: state.auth.error,
-        isLogin: state.auth.isLogin
+        isLogin: state.auth.isLogin,
+        status: state.auth.status
     }),
     (dispatch) => ({
         Auth: bindActionCreators(Auth, dispatch)

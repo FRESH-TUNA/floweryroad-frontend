@@ -31,6 +31,7 @@ class FlowerDetail extends React.Component {
         this.readComments = this.readComments.bind(this)
         this.checkComments = this.checkComments.bind(this)
         this.newComment = this.newComment.bind(this)
+        this.errorHandler = this.errorHandler.bind(this)
     }
 
     componentDidMount() {
@@ -69,7 +70,6 @@ class FlowerDetail extends React.Component {
     }
 
     newComment(data) {
-        this.closeNewComment(true)
         axios({
             method: 'post',
             url: '/flowers/' + this.state.flower.id + '/comments/',
@@ -80,8 +80,31 @@ class FlowerDetail extends React.Component {
         }).then((response) => {
             this.setState({ 'comments': response.data.comments })
         }).then(() => {
-            this.closeNewComment()
+            this.closeNewComment(false)
+        }).catch(error => {
+            this.errorHandler(error.response.status, this.newComment, data)
         })
+    }
+
+    async errorHandler(status, func, payload) {
+        const funcname = func.name.substring(6)
+
+        if(status === 401) {
+            if(this.props.isLogin) {
+                await this.props.Auth.refreshToken()
+                if(this.props.error)
+                    alert('세션이 만료되었습니다 다시로그인해주세요') 
+                else
+                    func(payload)
+            }
+            else
+                alert('로그인 이후에 이용해주세요!') 
+        }
+        else if(funcname === 'newComment'){
+            payload.content === '' ? 
+            alert('내용이 비었어요!') :
+            alert('서버 오류입니다. 관리자한테 문의하세요')
+        }
     }
 
     render() {
@@ -107,18 +130,18 @@ class FlowerDetail extends React.Component {
                             <div className="languages">
                                 <h3>꽃말</h3>
                                 <div>
-                                    {this.state.flower.languages.map(value => {
+                                    {this.state.flower.languages.map((value, index) => {
                                         return <Link to={"/search?language=" + value.name} onClick={(event) => event.stopPropagation()}>
-                                            <h5 className="purpose">{value.name}</h5></Link>
+                                            <h5 className="purpose" key={index}>{value.name}</h5></Link>
                                     })}
                                 </div>
                             </div>
                             <div className="purposes">
                                 <h3>목적</h3>
                                 <div>
-                                    {this.state.flower.purposes.map(value => {
+                                    {this.state.flower.purposes.map((value, index) => {
                                         return <Link to={"/search?purpose=" + value.name} onClick={(event) => event.stopPropagation()}>
-                                            <h5 className="purpose">{value.name}</h5>
+                                            <h5 className="purpose" key={index}>{value.name}</h5>
                                         </Link>;
                                     })}
                                 </div>
@@ -126,8 +149,8 @@ class FlowerDetail extends React.Component {
                             <div className="colors">
                                 <h3>색상</h3>
                                 <div>
-                                    {this.state.flower.colors.map(value => {
-                                        return <h5>{value.name}</h5>
+                                    {this.state.flower.colors.map((value, index) => {
+                                        return <h5 key={index}>{value.name}</h5>
                                     })}
                                 </div>
                             </div>
@@ -151,8 +174,8 @@ class FlowerDetail extends React.Component {
                                 <Slider ref={slider => (this.slider = slider)} {...settings} className="comment-slides">
                                     {this.state.newCommentState ?
                                         <NewComment newComment={this.newComment} closeNewComment={this.closeNewComment} /> : null}
-                                    {this.state.comments.map(value => {
-                                        return <Comment comment={value} />
+                                    {this.state.comments.map((value, index) => {
+                                        return <Comment comment={value} key={index}/>
                                     })}
                                 </Slider>
                             </div>
