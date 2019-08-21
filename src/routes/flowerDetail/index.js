@@ -73,7 +73,6 @@ export const openNewComment = function() {
 }
 
 export const closeNewComment = function(cancel) {
-    console.log(this.state.lastCommentPosition)
     if (cancel) this.slider.slickGoTo(this.state.lastCommentPosition)
     this.setState({ 'newCommentState': false })
 }

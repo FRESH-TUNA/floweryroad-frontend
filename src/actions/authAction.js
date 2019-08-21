@@ -81,7 +81,8 @@ export function refreshToken() {
     }
 }
 
-export function obtainTokenSuccess(data) {
+export function obtainTokenSuccess(data, email) {
+    localStorage.setItem('ema', email)
     localStorage.setItem('acc', data.access)
     localStorage.setItem('ref', data.refresh)
     localStorage.setItem('nick', data.nickname)
@@ -89,7 +90,11 @@ export function obtainTokenSuccess(data) {
     return async dispatch => {
         dispatch({
             type: OBTAIN_TOKEN_SUCCESS,
-            payload: {...data}
+            payload: {
+                data: {
+                    ...data, email
+                }
+            }
         })
     }
 }

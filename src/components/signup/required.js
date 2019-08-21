@@ -62,7 +62,7 @@ class Signup extends React.Component {
             axios({
                 method: 'post', url: '/signup', data: this.state,
             }).then((response) => {
-                this.props.Auth.obtainTokenSuccess(response.data)
+                this.props.Auth.obtainTokenSuccess(response.data, this.state.email)
             }).then(() => {
                 alert('회원가입이 완료되었습니다!')
                 this.props.history.push('/')
