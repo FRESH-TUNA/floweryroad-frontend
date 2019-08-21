@@ -8,6 +8,7 @@ export const OBTAIN_TOKEN_FAILURE = 'OBTAIN_TOKEN_FAILURE';
 export const REFRESH_TOKEN_SUCCESS = 'REFRESH_TOKEN_SUCCESS';
 export const USER_AUTH_DELETE = 'USER_AUTH_DELETE';
 export const CHANGE_NICKNAME_SUCCESS = 'CHANGE_NICKNAME_SUCCESS';
+export const CHANGE_NICKNAME_FAILURE = 'CHANGE_NICKNAME_FAILURE'
 
 export const initialState = {
     pending: false,
@@ -18,6 +19,7 @@ export const initialState = {
         refreshJWT: '/token/refresh'
     },
     data: {
+        email: localStorage.getItem('ema'),
         access: localStorage.getItem('acc'),
         refresh: localStorage.getItem('ref'),
         nickname: localStorage.getItem('nic'),
@@ -83,6 +85,13 @@ export default handleActions({
                 ...state.data,
                 nickname: action.payload.data.nickname,
             },
+        }
+    },
+    [CHANGE_NICKNAME_FAILURE]: (state, action) => {
+        return {
+            ...state,
+            error: true,
+            errorContext: action.payload
         }
     }
 }, initialState);

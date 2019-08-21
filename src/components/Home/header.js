@@ -1,11 +1,10 @@
 import React from 'react'
-import '../../css/components/searchHeader.css'
 import { withRouter, Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import axios from 'axios'
 import * as Auth from '../../actions/authAction';
-
+import '../../css/components/mainHeader.css'
 class Header extends React.Component {
     constructor(props) {
         super(props)

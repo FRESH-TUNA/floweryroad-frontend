@@ -4,7 +4,7 @@ import {store} from '../index'
 
 import { 
     OBTAIN_TOKEN_PENDING, OBTAIN_TOKEN_SUCCESS, OBTAIN_TOKEN_FAILURE,
-    REFRESH_TOKEN_SUCCESS, CHANGE_NICKNAME_SUCCESS, USER_AUTH_DELETE
+    REFRESH_TOKEN_SUCCESS, CHANGE_NICKNAME_SUCCESS, CHANGE_NICKNAME_FAILURE, USER_AUTH_DELETE
 } from '../reducers/authReducer'
 
 axios.defaults.baseURL = 'http://localhost:8000'
@@ -28,10 +28,11 @@ function changeNicknameResponse(payload) {
     })
 }
 
-function setUserData(response) {
+function setUserData(response, email) {
     localStorage.setItem('acc', response.data.access)
     localStorage.setItem('ref', response.data.refresh)
     localStorage.setItem('nick', response.data.nickname)
+    localStorage.setItem('ema', email)
 }
 
 
@@ -43,7 +44,7 @@ export function obtainToken(payload) {
         // 여기서 만든 promise 를 return 해줘야, 나중에 컴포넌트에서 호출 할 때 getPost().then(...) 을 할 수 있습니다
         try {
             const response = await obtainTokenResponse(payload)
-            setUserData(response)
+            setUserData(response, payload.email)
             dispatch({
                 type: OBTAIN_TOKEN_SUCCESS,
                 payload: {
@@ -126,8 +127,8 @@ export function changeNickname(payload) {
         }
         catch(error) {
             dispatch({
-                type: OBTAIN_TOKEN_FAILURE,
-                payload: error.response.status,
+                type: CHANGE_NICKNAME_FAILURE,
+                payload: error.response,
             });
         }
     }

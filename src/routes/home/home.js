@@ -11,7 +11,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import '../../css/routes/home.css'
-import '../../css/components/mainHeader.css'
+
 
 class Home extends React.Component {
     constructor(props) {

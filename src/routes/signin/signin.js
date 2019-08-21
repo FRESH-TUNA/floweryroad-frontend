@@ -18,24 +18,42 @@ class Signin extends React.Component {
         this.login = this.login.bind(this)
         this.onChangeHandler = this.onChangeHandler.bind(this)
         this.errorHandling = this.errorHandling.bind(this)
+        this.validater = this.validater.bind(this)
     }
+    validater() {
+        let error = '다음 필드가 비어있습니다!\n'
+        let errorState = false
 
+        if(this.state.userData.email === '') {
+            error += '이메일\n'
+            errorState = true
+        }
+            
+        if(this.state.userData.password === '') {
+            error += '비밀번호\n'
+            errorState = true
+        }
+        if(errorState)
+            return error
+        else
+            return null
+    }
     async login() {
-        await this.props.Auth.obtainToken(this.state.userData)
-        this.props.error ? 
-        this.errorHandling() :
-        this.props.history.push('/')
+        const isValid = this.validater()
+        if(isValid === null) {
+            await this.props.Auth.obtainToken(this.state.userData)
+            this.props.error ? 
+            this.errorHandling() :
+            this.props.history.push('/')
+        }
+        else
+            alert(isValid)
     }
     errorHandling() {
         if(this.props.status === 401)
             alert('비밀번호나 이메일이 잘못되었습니다!')
         else {
-            let error = '다음 필드가 비어있습니다!\n'
-            if(this.state.userData.email === '')
-                error += '이메일\n'
-            if(this.state.userData.password === '')
-                error += '비밀번호\n'
-            alert(error)
+            alert('서버 장애입니다 관리자에게 문의하세요')
         }
     }
     onChangeHandler(event) {

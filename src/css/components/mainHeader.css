@@ -44,7 +44,7 @@
     justify-content: center;
     align-items: center;
 }
-.main-header li:hover { background-color: pink; }
+.main-header li:hover { background-color: pink; cursor: pointer;}
 
 .main-header li:nth-of-type(1) { border-block-end: 2px solid black; }
 
@@ -56,3 +56,5 @@
     border: none;
     font-size: 16px;
 }
+
+.main-header li > button:hover{ background-color: pink; cursor: pointer;}
