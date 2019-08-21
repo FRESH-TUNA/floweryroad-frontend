@@ -7,9 +7,6 @@ import {
     REFRESH_TOKEN_SUCCESS, CHANGE_NICKNAME_SUCCESS, CHANGE_NICKNAME_FAILURE, USER_AUTH_DELETE
 } from '../reducers/authReducer'
 
-axios.defaults.baseURL = 'http://localhost:8000'
-
-
 function obtainTokenResponse(payload) {
     return axios.post(initialState.endpoints.obtainJWT, payload)
 }
