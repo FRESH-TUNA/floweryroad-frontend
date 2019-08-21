@@ -1,19 +1,26 @@
 import React from 'react'
-import '../../css/routes/flowerDetail.css'
-
+import Slider from "react-slick";
 import { withRouter, Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import axios from 'axios';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 import SearchHeader from '../../components/common/searchHeader';
 import Comment from '../../components/flowerDetail/comment';
 import NewComment from '../../components/flowerDetail/newcomment';
 import * as Auth from '../../actions/authAction';
+import '../../css/routes/flowerDetail.css'
 
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import {
+    readFlowerData,
+    openNewComment, 
+    closeNewComment,
+    readComments,
+    checkComments,
+    newComment,
+    errorHandler
+} from '.'
 
 class FlowerDetail extends React.Component {
     constructor(props) {
@@ -26,85 +33,16 @@ class FlowerDetail extends React.Component {
             lastCommentPage: 1,
             lastCommentPosition: 0
         }
-        this.openNewComment = this.openNewComment.bind(this)
-        this.closeNewComment = this.closeNewComment.bind(this)
-        this.readComments = this.readComments.bind(this)
-        this.checkComments = this.checkComments.bind(this)
-        this.newComment = this.newComment.bind(this)
-        this.errorHandler = this.errorHandler.bind(this)
+        this.readFlowerData = readFlowerData.bind(this)
+        this.newComment = newComment.bind(this)
+        this.openNewComment = openNewComment.bind(this)
+        this.closeNewComment = closeNewComment.bind(this)
+        this.readComments = readComments.bind(this)
+        this.checkComments = checkComments.bind(this)
+        this.errorHandler = errorHandler.bind(this)
     }
-
     componentDidMount() {
-        axios('/flowers/' + this.props.match.params.id)
-            .then(response => this.setState({ flower: response.data }))
-            .then(() => { return this.readComments(1) })
-            .then(response => { this.setState({ comments: response.data.comments, isLoading: false }); })
-    }
-
-    checkComments(index) {
-        if ((index + 1) % 6 === this.state.commentsCount - 2) { 
-            this.readComments(this.state.lastCommentPage + 1)
-            .then(response => {
-                this.setState({
-                    'comments': this.state.comments.concat(response.data.comments),
-                    'commentsCount': this.state.commentsCount + this.state.commentsCount,
-                    'lastCommentPage': this.state.lastCommentPage + 1,
-                    'lastCommentPosition': index
-                })
-            })
-        }
-    }
-
-    readComments(page) {
-        return axios('/flowers/' + this.props.match.params.id + '/comments?page=' + page)
-    }
-
-    openNewComment() {
-        this.slider.slickGoTo(0)
-        this.setState({ 'newCommentState': true })
-    }
-
-    closeNewComment(cancel) {
-        if (cancel) this.slider.slickGoTo(this.state.lastCommentPosition)
-        this.setState({ 'newCommentState': false })
-    }
-
-    newComment(data) {
-        axios({
-            method: 'post',
-            url: '/flowers/' + this.state.flower.id + '/comments/',
-            data,
-            headers: {
-                authorization: 'Bearer ' + this.props.access
-            },
-        }).then((response) => {
-            this.setState({ 'comments': response.data.comments })
-        }).then(() => {
-            this.closeNewComment(false)
-        }).catch(error => {
-            this.errorHandler(error.response.status, this.newComment, data)
-        })
-    }
-
-    async errorHandler(status, func, payload) {
-        const funcname = func.name.substring(6)
-
-        if(status === 401) {
-            if(this.props.isLogin) {
-                await this.props.Auth.refreshToken()
-                if(this.props.error)
-                    alert('세션이 만료되었습니다 다시로그인해주세요') 
-                else
-                    func(payload)
-            }
-            else
-                alert('로그인 이후에 이용해주세요!') 
-        }
-        else if(funcname === 'newComment'){
-            payload.content === '' ? 
-            alert('내용이 비었어요!') :
-            alert('서버 오류입니다. 관리자한테 문의하세요')
-        }
+        this.readFlowerData()
     }
 
     render() {
