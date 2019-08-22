@@ -1,0 +1,45 @@
+.mypage {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+    background-color: rgb(247, 247, 243);
+}
+
+.mypage h3{ 
+    font-family: 'Arita-dotum-Medium';
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-bottom: 10px;
+}
+
+.mypage .change-password, .mypage .change-nickname{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+
+    width: 400px;
+    background-color: rgb(240, 240, 236);
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+.mypage .change-password input, .mypage .change-nickname input{
+    width: 380px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.mypage .change-password > button, .mypage .change-nickname > button{
+    font-family: 'Arita-dotum-Medium';
+    width: 100px;
+    height: 30px;
+    align-self: flex-end;
+
+    background-color: white;
+    border: 0.1em solid black;
+    font-weight: bold;
+}
