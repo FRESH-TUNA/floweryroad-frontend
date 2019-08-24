@@ -12,7 +12,7 @@ class Comment extends React.Component {
         super(props)
         this.state = {
             count: this.props.comment.like,
-            is_like: this.props.comment.is_like
+            is_like: this.props.comment.is_like,
         }
         this.like = this.like.bind(this)
         this.dislike = this.dislike.bind(this)
@@ -88,6 +88,9 @@ class Comment extends React.Component {
                     </div>
                 </div>
                 <p>{this.props.comment.content}</p>
+                {this.props.comment.is_owner ? 
+                    <button className="delete" onClick={() => this.props.deleteComment({id: this.props.comment.id})}>삭제</button> : null
+                }
             </div>
         );
     }

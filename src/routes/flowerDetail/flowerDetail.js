@@ -14,11 +14,12 @@ import '../../css/routes/flowerDetail.css'
 
 import {
     readFlowerData,
-    openNewComment, 
+    openNewComment,
     closeNewComment,
     readComments,
     checkComments,
     newComment,
+    deleteComment, 
     errorHandler
 } from '.'
 
@@ -35,6 +36,7 @@ class FlowerDetail extends React.Component {
         }
         this.readFlowerData = readFlowerData.bind(this)
         this.newComment = newComment.bind(this)
+        this.deleteComment = deleteComment.bind(this)
         this.openNewComment = openNewComment.bind(this)
         this.closeNewComment = closeNewComment.bind(this)
         this.readComments = readComments.bind(this)
@@ -113,7 +115,7 @@ class FlowerDetail extends React.Component {
                                     {this.state.newCommentState ?
                                         <NewComment newComment={this.newComment} closeNewComment={this.closeNewComment} /> : null}
                                     {this.state.comments.map((value, index) => {
-                                        return <Comment comment={value} key={index}/>
+                                        return <Comment comment={value} deleteComment={this.deleteComment} key={index}/>
                                     })}
                                 </Slider>
                             </div>

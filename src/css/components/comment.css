@@ -29,4 +29,11 @@
     height: 1em;
 }
 
+.comment .delete {
+    align-self: flex-end;
+    width: 50%;
+    border: none;
+    background-color: pink;
 
+    margin-top: 10px;
+}

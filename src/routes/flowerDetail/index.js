@@ -103,6 +103,30 @@ export const newComment = function(data) {
     }
 }
 
+export const deleteComment = function(payload) {
+    if(window.confirm("정말 댓글을 지우시겠습니까?")) {
+        axios({
+            method: 'delete',
+            url: '/comments/' + payload.id,
+            data: {'flower_pk': this.state.flower.id},
+            headers: {
+                authorization: 'Bearer ' + this.props.access
+            },
+        }).then((response) => {
+            alert('댓글이 삭제 되었습니다.')
+            this.slider.slickGoTo(0)
+            this.setState({ 
+                'comments': response.data.comments,
+                'commentsCount': 6,
+                'lastCommentPage': 1,
+                'lastCommentPosition': 1
+            })
+        }).catch(error => {
+            this.errorHandler(error.response.status, this.deleteComment, payload)
+        })
+    }
+}
+
 export const errorHandler = async function(status, func, payload) {
     const funcname = func.name.substring(6)
 
@@ -122,6 +146,9 @@ export const errorHandler = async function(status, func, payload) {
     else if(funcname === 'newComment'){
         payload.content === '' ? 
         alert('내용이 비었어요!') :
-        alert('서버 오류입니다. 관리자한테 문의하세요')
+        alert('서버가 불안정합니다. 관리자한테 문의하세요')
+    }
+    else if(funcname === 'deleteComment'){
+        alert('서버가 불안정합니다. 관리자한테 문의하세요')
     }
 }
