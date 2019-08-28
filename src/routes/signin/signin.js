@@ -42,9 +42,12 @@ class Signin extends React.Component {
         const isValid = this.validater()
         if(isValid === null) {
             await this.props.Auth.obtainToken(this.state.userData)
-            this.props.error ? 
-            this.errorHandling() :
-            this.props.history.push('/')
+            if(this.props.error)
+                this.errorHandling() 
+            else if(this.props.history.location.state)
+                this.props.history.replace(this.props.history.location.state.prevPath)
+            else 
+                this.props.history.push('/')
         }
         else
             alert(isValid)

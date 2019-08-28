@@ -88,7 +88,7 @@ class Comment extends React.Component {
                     </div>
                 </div>
                 <p>{this.props.comment.content}</p>
-                {this.props.comment.is_owner ? 
+                {this.props.comment.is_owner && this.props.access ? 
                     <button className="delete" onClick={() => this.props.deleteComment({id: this.props.comment.id})}>삭제</button> : null
                 }
             </div>

@@ -65,7 +65,10 @@ class Signup extends React.Component {
                 this.props.Auth.obtainTokenSuccess(response.data, this.state.email)
             }).then(() => {
                 alert('회원가입이 완료되었습니다!')
-                this.props.history.push('/')
+                if(this.props.history.location.state)
+                    this.props.history.replace(this.props.history.location.state.prevPath)
+                else 
+                    this.props.history.push('/')
             }).catch((error) => {
                 this.errorHandling(error.status)
             })

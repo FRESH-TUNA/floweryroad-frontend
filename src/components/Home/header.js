@@ -70,8 +70,8 @@ class Header extends React.Component {
                         <li><button onClick={this.logout}>로그아웃</button></li>
                     </ul>) : (
                     <ul className="menu">
-                        <Link to="/signin"><li>로그인</li></Link>
-                        <Link to="/signup"><li >회원가입</li></Link>
+                        <Link to={{pathname: '/signin', state: { prevPath: this.props.history.location.pathname }}}><li>로그인</li></Link>
+                        <Link to={{pathname: '/signup', state: { prevPath: this.props.history.location.pathname }}}><li >회원가입</li></Link>
                     </ul>)
                 }    
             </div>
