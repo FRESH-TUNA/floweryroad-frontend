@@ -11,9 +11,7 @@ import ReduxThunk from 'redux-thunk';
 
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://floweryroadapi.herokuapp.com/'
-
-axios.defaults.baseURL = 'http://localhost:8000'
+axios.defaults.baseURL = '15.164.30.120'
 
 const rootReducer = combineReducers({
     auth
