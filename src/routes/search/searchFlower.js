@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, withRouter } from 'react-router-dom';
 import SearchFlowerDetail from '../../components/search/searchFlowerDetail'
 import getQuery from 'query-string'
-import {reload} from '.'
+import {reload, additonalLoading} from '.'
 
 import SearchHeader from '../../components/common/searchHeader'
 import SearchSubheader from '../../components/search/searchSubheader'
@@ -16,6 +16,7 @@ class Meetup extends React.Component {
             flowerData: [],
         }
         this.reload = reload.bind(this)
+        this.additonalLoading = additonalLoading.bind(this)
     }
     componentWillReceiveProps(nextProps) {
         if (nextProps.location !== this.props.location) 
@@ -24,6 +25,7 @@ class Meetup extends React.Component {
 
     componentDidMount() {
         this.reload(this.props.location.search)
+        document.addEventListener('scroll', this.additonalLoading)
     }
 
     render() {
