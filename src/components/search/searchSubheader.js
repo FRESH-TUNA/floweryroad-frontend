@@ -5,7 +5,19 @@ import { withRouter, Link} from 'react-router-dom'
 class SearchSubHeader extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            selectColorState: false,
+            selectSeasonState: false,
+        }
     }
+
+    changeSelectColorState() {
+        if(this.state.selectColorState)
+            this.setState({'selectColorState':false})
+        else
+            this.setState({'selectColorState':true})
+    }
+
     render() {
         const queryString = require('query-string');
         let {query} = queryString.parse(this.props.location.search);
@@ -26,6 +38,17 @@ class SearchSubHeader extends React.Component {
                     <Link to={"/search?query=" + query + "&season=1"}><h4>여름</h4></Link>
                     <Link to={"/search?query=" + query + "&season=2"}><h4>가을</h4></Link>
                     <Link to={"/search?query=" + query + "&season=3"}><h4>겨울</h4></Link>
+
+                    {/* <button onClick={() => this.changeSelectColorState()}></button>
+
+                    {this.state.selectColorState &&
+                        <div className="select-colors">
+                            <Link to={"/search?query=" + query + "&color=0"}><h4>빨간색</h4></Link>
+                            <Link to={"/search?query=" + query + "&color=1"}><h4>파란색</h4></Link>
+                            <Link to={"/search?query=" + query + "&color=2"}><h4>노란색</h4></Link>
+                            <Link to={"/search?query=" + query + "&color=3"}><h4>주황색</h4></Link>
+                        </div>
+                    } */}
                 </div>
             </div>
         );

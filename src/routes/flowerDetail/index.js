@@ -83,7 +83,7 @@ export const newComment = function(data) {
     else {
         axios({
             method: 'post',
-            url: '/flowers/' + this.state.flower.id + '/comments/',
+            url: '/flowers/' + this.state.flower.id + '/comments',
             data,
             headers: {
                 authorization: 'Bearer ' + this.props.access

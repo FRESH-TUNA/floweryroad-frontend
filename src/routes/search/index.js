@@ -16,6 +16,10 @@ export const reload = function (query) {
         url = queryString.query ? ('/flowers?search=' + queryString.query + '&season=' + queryString.season)
             : ('/flowers?season=' + queryString.season)
     }
+    else if (queryString.color) {
+        url = queryString.query ? ('/flowers?search=' + queryString.query + '&color=' + queryString.color)
+            : ('/flowers?color=' + queryString.color)
+    }
     else
         url = '/flowers?search=' + queryString.query
 

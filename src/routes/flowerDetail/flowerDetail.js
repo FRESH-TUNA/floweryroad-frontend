@@ -90,7 +90,9 @@ class FlowerDetail extends React.Component {
                                 <h3>색상</h3>
                                 <div>
                                     {this.state.flower.colors.map((value, index) => {
-                                        return <h5 key={index}>{value.name}</h5>
+                                        return <Link to={"/search?color=" + value.name} onClick={(event) => event.stopPropagation()}>
+                                            <h5 className="purpose" key={index}>{value.name}</h5>
+                                        </Link>;
                                     })}
                                 </div>
                             </div>

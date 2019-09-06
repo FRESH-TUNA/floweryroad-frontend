@@ -32,7 +32,7 @@ class Meetup extends React.Component {
         return (
             <div className="search" onClick={() => document.getElementsByClassName('menu')[0].style.display = 'none'}>
                 <SearchHeader />
-                {(getQuery.parse(this.props.location.search).query) &&
+                {(getQuery.parse(this.props.location.search).query !== undefined) &&
                     <SearchSubheader />
                 }
                 <div className="result">
