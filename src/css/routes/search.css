@@ -15,6 +15,8 @@
     display: flex;
     flex-flow: column;
     align-items: center;
+    height: 100%;
+    overflow: scroll;
     width: 100%;
     background-color: rgb(247, 247, 243);
 }

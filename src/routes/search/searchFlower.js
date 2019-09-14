@@ -25,7 +25,7 @@ class Meetup extends React.Component {
 
     componentDidMount() {
         this.reload(this.props.location.search)
-        document.addEventListener('scroll', this.additonalLoading)
+        document.getElementsByClassName('result')[0].addEventListener('scroll', (event) => this.additonalLoading(event))
     }
 
     render() {
