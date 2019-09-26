@@ -24,6 +24,7 @@ import {
 } from '.'
 
 class FlowerDetail extends React.Component {
+  
     constructor(props) {
         super(props)
         this.state = {
@@ -46,7 +47,6 @@ class FlowerDetail extends React.Component {
     componentDidMount() {
         this.readFlowerData()
     }
-
     render() {
         const settings = {
             dots: false, infinite: false, speed: 500,
@@ -109,7 +109,7 @@ class FlowerDetail extends React.Component {
                 }
 
                 {this.state.isLoading ?
-                    (<div className="comments" />) : (
+                    (<div className="comments"/>) : (
                         <div className="comments">
                             <h3>댓글</h3>
                             <div className="slide-wrapper">

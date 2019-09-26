@@ -7,9 +7,9 @@
 }
 
 .signup .body {
-    width: 400px;
+    width: 90vw;
+    max-width: 400px;
     height: 500px;
-
     display: flex;
     flex-flow: column;
     justify-content: center;

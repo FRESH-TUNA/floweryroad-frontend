@@ -12,8 +12,9 @@
 
 .flower-detail .main {
     display: flex;
+    flex-flow: column;
     align-items: center;
-    width: 700px;
+    width: 80vw;
     padding: 25px;
 
     background-color: white;
@@ -22,7 +23,8 @@
 
 .flower-detail .description {
     position: relative;
-    width: 700px;
+    width: 80vw;
+    max-width: 700px;
     height: 100px;
     padding: 60px 25px 25px 25px;
 
@@ -45,9 +47,9 @@
 }
 
 .flower-detail .comments {
-    width: 700px;
+    width: 80vw;
+    max-width: 700px;
     height: 300px;
-
     padding: 25px;
 
     display: flex;
@@ -78,9 +80,10 @@
 }
 
 .flower-detail .main > img{
-    width: 346.81px;
+    width: 80%;
+    max-width: 346.81px;
     height: 100%;
-    margin-right: 25px;
+    margin-right: 0px;
 }
 
 .flower-detail .main > div{
@@ -146,11 +149,21 @@
 } 
 
 .flower-detail .slick-slider {  
-    width: 620px;
+    width: 80vw;
+    max-width: 620px;
 }
 .flower-detail .slick-prev:before, .flower-detail .slick-next:before { color: pink; }
 
 .flower-detail .slick-prev { left: -28px; }
 
-
+@media screen and (min-width: 800px) {
+    .flower-detail .main {
+        flex-flow: row;
+        max-width: 700px;
+        width: 80vw;
+    }
+    .flower-detail .main > img {
+        margin-right: 25px;
+    }
+}
 

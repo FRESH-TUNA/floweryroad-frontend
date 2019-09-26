@@ -3,13 +3,15 @@
 
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css); <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'> * { font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif'; }
 
-html, body, #root, .App {
-  height: 100%;
-  margin: 0;
-}
 
 html {
+  height: 100%;
   font-family: 'NotoSerifKR'
+}
+
+body, #root {
+  height: 100%;
+  margin: 0;
 }
 
 a {

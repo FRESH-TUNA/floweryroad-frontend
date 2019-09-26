@@ -11,7 +11,6 @@ import FlowerDetail from '../../routes/flowerDetail'
 
 function App() {
   return (
-    <div className="App">
       <Switch>
         <Route path='/mypage' component={() => <Mypage/>} />  
         <Route path='/search' component={() => <SearchResult/>} />  
@@ -23,7 +22,6 @@ function App() {
         
         <Route path='/' component={() => <Home testprops={'a'} />} />
       </Switch>
-    </div>
   );
 }
 

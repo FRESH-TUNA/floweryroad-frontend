@@ -14,7 +14,8 @@
 }
 
 .home .search-bar {
-  width: 920px;
+  width: 80vw;
+  max-width: 1000px;
   height: 50px;
 
   display: flex;
@@ -27,10 +28,15 @@
 .home .search-bar input{
   font-family: sans-serif;
   flex-grow: 1;
-  font-size: 1.5em;
-  padding: 0 1em;
+  font-size: 4.5vw;
+  padding: 0 0.5em;
   border-style: none;
   background-color: rgb(230,230,230);
+}
+@media screen and (min-width: 500px) {
+  .home .search-bar input{
+    font-size: 1.2em;
+  }
 }
 
 .home .search-bar input:focus{ outline: none; }
@@ -40,9 +46,12 @@
   height: 50px;
   padding: 10px;
   background-color: rgb(230,230,230);
+  background-image: url(https://image.flaticon.com/icons/svg/149/149852.svg);
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
   border: none;
 }
-
 
 .home .main-functions {
   display: grid;

@@ -1,7 +1,8 @@
 .comment {
     display: flex;
     flex-flow: column;
-    width: 180px;
+    width: 19vw;
+    max-width: 180px;
     height: 180px;
     padding: 10px;
     background-color: rgb(247, 247, 243);
@@ -11,6 +12,11 @@
     margin-block-start: 0em;
     margin-block-end: 0em;
 } 
+@media screen and (max-width: 800px) {
+    .comment .header > h4 {
+        display: none;
+    }
+}
 
 .comment .header { 
     display: flex; 

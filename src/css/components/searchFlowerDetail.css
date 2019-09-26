@@ -1,7 +1,8 @@
 .search-flower-detail {
     display: flex;
 
-    width: 500px;
+    width: 90vw;
+    max-width: 500px;
     margin: 0.8em 0;
 
     padding: 10px;
@@ -44,7 +45,6 @@
 .search-flower-detail .purposes {
     display: flex;
     flex-wrap: wrap;
-    width: 400px;
 }
 
 .search-flower-detail .purpose {

@@ -33,37 +33,14 @@ class Home extends React.Component {
     }
 
     render() {
-        // const settings = {
-        //     dots: true,
-        //     speed: 500,
-        //     slidesToShow: 3,
-        //     slidesToScroll: 3,
-        // };
-
         return (
             <div className="home" onClick={() => document.getElementsByClassName('menu')[0].style.display = 'none'}>
                 <Header />
                 <h1>풀꽃길</h1>
                 <div className="search-bar">
-                    <input type="text" placeholder="이름, 꽃말, 목적, 색상 으로 검색하기" onChange={(e) => {this.handleQuery(e)}} onKeyUp ={(event) => this.search(event)}/>
-                    <button type="button" className="search-button" onClick={() => this.props.history.push('/search?query=' + this.state.search)}><img src="https://image.flaticon.com/icons/svg/149/149852.svg" /></button>
+                    <input type="text" placeholder="이름, 꽃말, 목적, 색상 으로 검색" onChange={(e) => {this.handleQuery(e)}} onKeyUp ={(event) => this.search(event)}/>
+                    <button type="button" className="search-button" onClick={() => this.props.history.push('/search?query=' + this.state.search)}></button>
                 </div>
-                {/* <button type="button" onClick={() => this.props.history.push('/recommend')}>화제의 꽃</button> */}
-                {/* <div className="slider">
-                    <Slider {...settings}>
-                        <div>
-
-                        </div>
-                        <HomeFlower>
-                        </HomeFlower>
-                        <HomeFlower>
-                        </HomeFlower>
-                        <HomeFlower>
-                        </HomeFlower>
-                        <HomeFlower>
-                        </HomeFlower>
-                    </Slider>
-                </div> */}
             </div>
         );
     }
