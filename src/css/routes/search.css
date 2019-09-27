@@ -1,6 +1,7 @@
 .search {
-    height: 100%;
-    margin-top: 5.5em; 
+    position: relative;
+    height: calc(100vh - 5.5em);
+    padding-top: 5.5em; 
     background-color: rgb(247, 247, 243);
 }
 

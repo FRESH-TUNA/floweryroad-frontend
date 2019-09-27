@@ -68,7 +68,11 @@ class SearchHeader extends React.Component {
                 <button 
                     className="auth" 
                     onClick={(event) => {
-                        document.getElementsByClassName('menu')[0].style.display = 'initial';
+                        const menu = document.getElementsByClassName('menu')[0]
+                        if(menu.style.display === 'initial')
+                            menu.style.display = 'none';
+                        else
+                            menu.style.display = 'initial';
                         event.stopPropagation()
                     }}
                 />

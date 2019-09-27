@@ -12,7 +12,6 @@
 
     font-family: 'Arita-dotum-Medium';
     background-color: white;
-    z-index: -1;
 }
 
 .sub-header .content-wrapper{
@@ -20,7 +19,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-left: 15%; 
+    margin: 0 2%;
 }
 
 .sub-header .search-bar {

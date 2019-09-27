@@ -6,6 +6,7 @@ import {reload, additonalLoading} from '.'
 
 import SearchHeader from '../../components/common/searchHeader'
 import SearchSubheader from '../../components/search/searchSubheader'
+import BlankHeader from '../../components/search/blankheader'
 import '../../css/routes/search.css'
 
 class Meetup extends React.Component {
@@ -32,8 +33,8 @@ class Meetup extends React.Component {
         return (
             <div className="search" onClick={() => document.getElementsByClassName('menu')[0].style.display = 'none'}>
                 <SearchHeader />
-                {(getQuery.parse(this.props.location.search).query !== undefined) &&
-                    <SearchSubheader />
+                {getQuery.parse(this.props.location.search).query !== undefined ?
+                    (<SearchSubheader />) : (<BlankHeader />)
                 }
                 <div className="result">
                     {this.state.isLoading ? (

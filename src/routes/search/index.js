@@ -39,10 +39,9 @@ export const reload = function (query) {
 export const additonalLoading = function(event) {
     const target = event.target
     if(
-        target.offsetHeight + target.scrollTop >= target.scrollHeight
+        target.offsetHeight + target.scrollTop >= target.scrollHeight - 1
         && this.state.links.next !== null
     ) {
-        console.log(target)
         axios(this.state.links.next)
         .then(response => {
             this.setState({ 
