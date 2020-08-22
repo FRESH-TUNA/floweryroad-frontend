@@ -114,13 +114,17 @@ export const deleteComment = function(payload) {
             },
         }).then((response) => {
             alert('댓글이 삭제 되었습니다.')
-            this.slider.slickGoTo(0)
+        }).then(() => {
+            return this.readComments(1);
+        }).then((response) => {
             this.setState({ 
                 'comments': response.data.comments,
                 'commentsCount': 6,
                 'lastCommentPage': 1,
                 'lastCommentPosition': 1
             })
+        }).then(() => {
+            this.slider.slickGoTo(0);
         }).catch(error => {
             this.errorHandler(error.response.status, this.deleteComment, payload)
         })
