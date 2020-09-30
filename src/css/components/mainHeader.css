@@ -14,13 +14,13 @@
 .main-header h3 { margin-left: 1em }
 
 .main-header .auth { 
-    width: 3.5em; height: 3.5em; 
+    width: 30px;
+    height: 30px; 
     background-color: white; 
     background-image: url("https://image.flaticon.com/icons/svg/1000/1000997.svg");
     background-repeat: no-repeat;
     border: none;
     margin-right: 1em;
-    background-color: rgb(247, 247, 243);
 }
 
 .main-header .menu {

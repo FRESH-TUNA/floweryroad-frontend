@@ -36,11 +36,10 @@ class Home extends React.Component {
         return (
             <div className="home" onClick={() => document.getElementsByClassName('menu')[0].style.display = 'none'}>
                 <Header />
-                <h1>풀꽃길</h1>
-                <div className="search-bar">
-                    <input type="text" placeholder="이름, 꽃말, 목적, 색상 으로 검색" onChange={(e) => {this.handleQuery(e)}} onKeyUp ={(event) => this.search(event)}/>
-                    <button type="button" className="search-button" onClick={() => this.props.history.push('/search?query=' + this.state.search)}></button>
-                </div>
+                <img src={require('../../assets/img/1.jpg')}/>
+                <h1><span className="g">풀</span><span className="f">꽃</span><span className="r">길</span></h1>
+                <input type="text" placeholder="이름, 꽃말, 목적, 색상 으로 검색" onChange={(e) => {this.handleQuery(e)}} onKeyUp ={(event) => this.search(event)}/>
+                <button type="button" className="search-button" onClick={() => this.props.history.push('/search?query=' + this.state.search)}>검색하기</button>
             </div>
         );
     }

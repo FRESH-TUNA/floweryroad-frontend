@@ -17,18 +17,22 @@
 .searchHeader h3 { 
     margin-left: 0.7em;
     font-size: 0.9em;
+    font-family: 'Arita-dotum-Medium';
 }
 
 .searchHeader .auth { margin-right: 1em }
 
 .searchHeader .search-bar {
-    height: 2.5em;
+    height: 1.5em;
     display: flex;
     justify-content: flex-end;  
     flex-grow: 1;
     margin: 0 1em;
     font-family: 'Arita-dotum-Medium';
-    background-color: rgb(233, 233, 233);
+    /* background-color: rgb(233, 233, 233); */
+    box-shadow: 0 1px 6px 0 rgba(32, 33, 36, .28);
+    border-radius: 24px;
+    padding: 10px;
 }
 @media screen and (min-width: 1500px) {
     .searchHeader .search-bar{
@@ -45,9 +49,10 @@
     font-family: sans-serif;
     flex-grow: 1;
     font-size: 1em;
-    
+    height: 100%;
     border-style: none;
-    background-color: rgb(233, 233, 233);
+    /* box-shadow: 0 1px 6px 0 rgba(32, 33, 36, .28); */
+    /* background-color: rgb(233, 233, 233); */
 }
 
 .searchHeader .search-bar button {
@@ -56,10 +61,10 @@
     justify-content: center;
     align-items: center;
     border-style: none;
-    border-color: rgb(233, 233, 233);
-    background-color: rgb(233, 233, 233);
+    /* border-color: rgb(233, 233, 233); */
+    background-color: white;
 } 
-.searchHeader .search-bar button > img{ width: 2.5em; }
+.searchHeader .search-bar button > img{ width: 2em; }
 
 .searchHeader .search-bar input:focus{ outline: none; }
 
