@@ -5,12 +5,6 @@
     background-color: rgb(247, 247, 243);
 }
 
-.search .loading {
-    position: fixed;
-    top: 50%;    
-    left: 50%;
-}
-
 .search .result {
     display: flex;
     flex-flow: column;

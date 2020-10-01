@@ -38,15 +38,18 @@ export const reload = function (query) {
 
 export const additonalLoading = function(event) {
     const target = event.target
+
     if(
         target.offsetHeight + target.scrollTop >= target.scrollHeight - 1
         && this.state.links.next !== null
     ) {
+        this.setState({isLoading: true});
         axios(this.state.links.next)
         .then(response => {
             this.setState({ 
                 flowerData: this.state.flowerData.concat(response.data.flowers), 
-                links: response.data.links
+                links: response.data.links,
+                isLoading: false
             })
         })
         .catch(() => {
