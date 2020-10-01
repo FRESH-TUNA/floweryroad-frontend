@@ -42,7 +42,7 @@ class Meetup extends React.Component {
         {getQuery.parse(this.props.location.search).query !== undefined ?
           (<SearchSubheader />) : (<BlankHeader />)
         }
-        
+
         <div className="result">
           {this.state.flowerData === null ? (
             null
